@@ -37,7 +37,7 @@
                         <tr>
                             <td>{{ $row->mahasiswa->nim }}</td>
                             <td><a href="#">{{ $row->email }}</a></td>
-                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->mahasiswa->name }}</td>
                             <td>{{ $row->mahasiswa->gender }}</td>
                             <td style="text-transform: uppercase;">{{ $row->mahasiswa->jurusan }}</td>
                             <td>
