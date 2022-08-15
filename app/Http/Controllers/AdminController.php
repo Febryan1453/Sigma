@@ -1,0 +1,291 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\AddAdminRequest;
+use App\Http\Requests\AddMahasiswaRequest;
+use App\Http\Requests\AddTugasMhsRequest;
+use App\Http\Requests\EditTugasMhsRequest;
+use App\Http\Requests\MyProfileMhsAdminRequest;
+use App\Models\HasilTugas;
+use App\Models\Mahasiswa;
+use App\Models\Tugas;
+use App\Models\User;
+use DateTime;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+class AdminController extends Controller
+{
+    public function index()
+    {
+        $title = "Dashboard - Admin";
+        $countMhs = Mahasiswa::count();
+        $countRpl = Tugas::where('jurusan','rpl')->count();
+        $countTkj = Tugas::where('jurusan','tkj')->count();
+        $countDmm = Tugas::where('jurusan','dmm')->count();
+        return view('layouts.admin.index',[
+            'countMhs'      => $countMhs,
+            'countRpl'      => $countRpl,
+            'countTkj'      => $countTkj,
+            'countDmm'      => $countDmm,
+            'title'         => $title,
+        ]);
+    }
+
+    public function addAdmin()
+    {
+        $title = "Tambah User Admin";
+        return view('layouts.admin.add-admin',[
+            'title'     => $title,
+        ]);
+    }
+
+    public function saveAdmin(AddAdminRequest $request)
+    {
+
+        $userAdmin              = new User();
+        $userAdmin->name        = $request->name;
+        $userAdmin->email       = $request->email;
+        $userAdmin->password    = Hash::make($request->password);
+        $userAdmin->role        = 1;
+        $userAdmin->save();
+
+        return redirect()->route('admin.addadmin')->with('Ok', "Berhasil menambah akun admin");
+
+    }
+    
+    public function listAdmin()
+    {
+        $title = "Data User Admin";
+        $userAdmin = User::where('role',1)->get();
+        return view('layouts.admin.list-admin',[
+            'userAdmin'     => $userAdmin,
+            'title'     => $title,
+        ]);
+    }
+        
+    public function addMhs()
+    {
+        $title = "Tambah Data Mahasiswa";
+        return view('layouts.admin.add-mhs',[
+            'title'     => $title,
+        ]);
+    }
+
+    public function saveMhs(AddMahasiswaRequest $request)
+    {
+
+        // dd($request->all());
+        $userMahasiswa              = new User();
+        $userMahasiswa->name        = $request->name;
+        $userMahasiswa->email       = $request->email;
+        $userMahasiswa->password    = Hash::make("idn123");
+        $userMahasiswa->role        = 0;
+        $userMahasiswa->save();
+
+        $dataMahasiswa              = new Mahasiswa();
+        $dataMahasiswa->user_id     = $userMahasiswa->id;
+        $dataMahasiswa->nim         = $request->nim;
+        $dataMahasiswa->gender      = $request->gender;
+        $dataMahasiswa->name        = $request->name;
+        $dataMahasiswa->jurusan     = $request->jurusan;
+        $dataMahasiswa->save();
+
+        return redirect()->route('admin.addmhs')->with('Ok', "Data $request->name berhasil ditambahkan ke database !");
+    }
+    
+    public function listMhs()
+    {
+        $title = "Data Mahasiswa";
+        $userMhs = User::where('role',0)->get();
+        return view('layouts.admin.list-mhs',[
+            'userMhs'     => $userMhs,
+            'title'       => $title,
+        ]);
+    }
+    
+    public function detailMhs($id)
+    {
+        $detailUserMhs = Mahasiswa::where('user_id',$id)->first();
+        $title = "Detail Mahasiswa - $detailUserMhs->nim";
+
+        // https://bayu.pinasthika.com/ti/menghitung-umur-berdasarkan-tanggal-lahir-dengan-php/
+        $tglLahir = new DateTime($detailUserMhs->tgl_lahir);
+        $toDay = new DateTime('today');
+        $y = $toDay->diff($tglLahir)->y;
+        $m = $toDay->diff($tglLahir)->m;
+        $d = $toDay->diff($tglLahir)->d;
+
+        $hasiltugas = HasilTugas::where('mahasiswa_id', $detailUserMhs->id)->get();
+
+        return view('layouts.admin.detail-mhs',[
+            'detailUserMhs'     => $detailUserMhs,
+            'title'             => $title,
+            'hasiltugas'        => $hasiltugas,
+            'y'                 => $y,
+            'm'                 => $m,
+            'd'                 => $d,
+        ]);
+    }
+    
+    public function addTugasMahasiswa()
+    {
+        $title = "Tambah Tugas Mahasiswa";
+        return view('layouts.admin.add-tugas-mhs',[
+            'title'     => $title,
+        ]);
+    }
+        
+    public function saveTugasMahasiswa(AddTugasMhsRequest $request)
+    {
+        $name = Auth::user()->name;
+
+        $addTugasMhs                = new Tugas();
+        $addTugasMhs->tugas_ke      = $request->tugas_ke;
+        $addTugasMhs->soal          = $request->soal;
+        $addTugasMhs->jurusan       = $request->jurusan;
+        $addTugasMhs->petunjuk      = $request->petunjuk;
+        $addTugasMhs->status        = 1;
+        $addTugasMhs->save();
+
+        return redirect()->route('admin.addtugasmhs')->with('Ok', "$name, Menambahkan tugas $request->tugas_ke kepada mahasiswa $request->jurusan !");
+
+    }
+    
+    public function listTugasMahasiswa()
+    {
+        $title = "Tugas Mahasiswa";
+        $tugasMhsRpl = Tugas::where('jurusan','rpl')->get();
+        $tugasMhsTkj = Tugas::where('jurusan','tkj')->get();
+        $tugasMhsDmm = Tugas::where('jurusan','dmm')->get();
+        
+        return view('layouts.admin.list-tugas-mhs',[
+            'tugasMhsRpl'     => $tugasMhsRpl,
+            'tugasMhsTkj'     => $tugasMhsTkj,
+            'tugasMhsDmm'     => $tugasMhsDmm,
+            'title'           => $title,
+        ]);
+    }
+
+    public function editTugasMahasiswa($id)
+    {
+        $editTugas = Tugas::findOrFail($id);
+        $title = "Edit Tugas $editTugas->tugas_ke";
+        return view('layouts.admin.edit-tugas-mhs',[
+            'editTugas'     => $editTugas,
+            'title'     => $title,
+        ]);
+    }
+
+    public function saveEditTugasMahasiswa(EditTugasMhsRequest $request)
+    {
+        $name = Auth::user()->name;
+
+        $addTugasMhs                = Tugas::findOrFail($request->id);
+        $addTugasMhs->soal          = $request->soal;
+        $addTugasMhs->jurusan       = $request->jurusan;
+        $addTugasMhs->petunjuk      = $request->petunjuk;
+        $addTugasMhs->update();
+
+        return redirect()->route('admin.listtugasmhs')->with('Ok', "$name, Mengubah tugas $request->tugas_ke untuk mahasiswa $request->jurusan !");
+
+    }
+
+    public function saveStsEditTugasMahasiswa(Request $request)
+    {
+        $name = Auth::user()->name;
+
+        $addTugasMhs                = Tugas::findOrFail($request->id);
+        $addTugasMhs->status        = $request->status;
+        $addTugasMhs->update();
+
+        return redirect()->route('admin.listtugasmhs')->with('Ok', "$name, Mengubah tugas $request->tugas_ke untuk mahasiswa $request->jurusan !");
+
+    }
+    
+    public function lihatTugasMahasiswa($id)
+    {
+        $hasilTugas = HasilTugas::where('tugas_id',$id)->get();
+        $tugas      = Tugas::findOrFail($id);
+        $title = "Tugas $tugas->tugas_ke";
+        return view('layouts.admin.list-tugaske-mhs',[
+            'hasilTugas'     => $hasilTugas,
+            'tugas'          => $tugas,
+            'title'          => $title,
+        ]);
+    }
+    
+    public function periksaTugasMahasiswa(Request $request)
+    {
+        $name = Auth::user()->name;
+
+        $addTugasMhs                = HasilTugas::findOrFail($request->id);
+        $addTugasMhs->status        = $request->status;
+        $addTugasMhs->update();
+
+        return redirect()->back()->with('Ok', "Berhasil memeriksa tugas !");
+
+    }
+
+    public function delTugasSelesai(Request $request)
+    {
+
+        $addTugasMhs                = HasilTugas::findOrFail($request->id);
+        $addTugasMhs->delete();
+
+        return redirect()->back()->with('Ok', "Berhasil menghapus tugas !");
+
+    }
+
+    public function resetPass(Request $request)
+    {
+
+        $user                = User::findOrFail($request->id);
+        $user->password      = Hash::make("idn123");
+        $user->update();
+
+        return redirect()->back()->with('Ok', "Berhasil mengubah password $user->name ke default !");
+
+    }
+
+    public function deleteUserAdmin(Request $request)
+    {
+
+        $userAdmin                = User::findOrFail($request->id);
+        $userAdmin->delete();
+
+        return redirect()->back()->with('Ok', "Berhasil menghapus admin !");
+
+    }
+
+    public function lengkapiProfileMhs($id)
+    {
+        $detailUserMhs = Mahasiswa::findOrFail($id);
+        $title = "Edit Profile - $detailUserMhs->name";
+        return view('layouts.admin.edit-my-profile-mhs',[
+            'detailUserMhs'     => $detailUserMhs,
+            'title'             => $title,
+        ]);
+    }
+
+    public function updateProfileMhs(MyProfileMhsAdminRequest $request)
+    {
+        $mhs = Mahasiswa::findOrFail($request->id);
+
+        $mhs->nim               = $request->nim;
+        $mhs->name              = $request->name;
+        $mhs->tempat_lahir      = $request->tempat_lahir;
+        $mhs->tgl_lahir         = $request->tgl_lahir;
+        $mhs->jurusan           = $request->jurusan;
+        $mhs->gender            = $request->gender;
+        $mhs->telp              = $request->telp;
+        $mhs->alasan            = $request->alasan;
+
+        $mhs->update();
+
+        return redirect()->route('admin.detailmhs',$mhs->user_id)->with('Ok', "Profile berhasil diupdate !");
+    }
+    
+}

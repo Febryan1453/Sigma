@@ -1,0 +1,24 @@
+Format Waktu :
+https://code.tutsplus.com/id/tutorials/working-with-date-and-time-in-php--cms-31768
+
+Embed Video YT:
+https://github.com/oscarotero/Embed
+
+UUID Generator :
+https://www.youtube.com/watch?v=JXo-OiRJI9w
+
+Menghitung Umur :
+https://bayu.pinasthika.com/ti/menghitung-umur-berdasarkan-tanggal-lahir-dengan-php/
+
+Matikan Register :
+https://kawankoding.com/artikel/menonaktifkan-halaman-register-di-route-auth-laravel
+- Route::any('/register', [App\Http\Controllers\HomeController::class, 'index']);
+- Auth::routes([
+    'register' => false
+  ]);
+- Route::get('/', function () {
+    return view('auth.login');
+  });
+
+Deploy Ke Heroku :
+https://www.youtube.com/watch?v=QOPGYVqrIsA
