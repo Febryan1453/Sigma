@@ -21,14 +21,15 @@
                   <h6 class="m-0 font-weight-bold text-primary">User Mahasiswa</h6>
                 </div>
                 <div class="table-responsive">
-                  <table class="table align-items-center table-flush text-center">
+                  <table class="table align-items-center table-flush text-center" id="dataTable">
                     <thead class="thead-light">
                       <tr>
                         <th>Nim</th>
                         <th>Alamat Email</th>
                         <th>Nama</th>
-                        <th>Gender</th>
+                        <th>JK</th>
                         <th>Jurusan</th>
+                        <th>Profil</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -41,16 +42,25 @@
                             <td>{{ $row->mahasiswa->gender }}</td>
                             <td style="text-transform: uppercase;">{{ $row->mahasiswa->jurusan }}</td>
                             <td>
+                              @if($row->mahasiswa->isready == 0)
+                              <span class="badge badge-danger">No</span>
+                              @else
+                              <span class="badge badge-success">Yes</span>
+                              @endif
+                            </td>
+                            <td>
                                 <a href="{{ route('admin.detailmhs',$row->id) }}" class="btn btn-sm btn-primary">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#resetPwMhs{{$row->id}}" id="#myBtn">
-                                    <!-- <i class="fa-solid fa-unlock-keyhole"></i> -->
                                     <i class="fa-solid fa-key"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusMhs{{$row->id}}" id="#myBtn">
+                                    <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
                             @include('layouts.modal.reset-pw-mhs')
-                            <!-- @include('layouts.modal.identitas-mhs') -->
+                            @include('layouts.modal.hapus-akun-mhs')
                         </tr>
                         @empty
                         <tr>
@@ -59,8 +69,15 @@
                         @endforelse
                     </tbody>
                   </table>
+                  
                 </div>
-                <div class="card-footer"></div>
+                            
+                <div class="card-footer">
+                  <!-- Current Page: {{ $userMhs->currentPage() }}<br> -->
+                <!-- Jumlah Data Mahasiswa : {{ $userMhs->total() }}<br> -->
+                <!-- Data perhalaman: {{ $userMhs->perPage() }}<br>  -->
+                  {{ $userMhs->links() }}
+                </div>
               </div>
             </div>
         </div>

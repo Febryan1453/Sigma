@@ -6,7 +6,7 @@
             <div class="sidebar-brand-icon">
               <i class="fa-solid fa-graduation-cap"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">MhsIDN</div>
+            <div class="sidebar-brand-text mx-3">SIGMA</div>
           </a>
           <hr class="sidebar-divider my-0">
           <li class="nav-item active">
@@ -21,7 +21,7 @@
             <div class="sidebar-brand-icon">
               <i class="fa-solid fa-graduation-cap"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">MhsIDN</div>
+            <div class="sidebar-brand-text mx-3">SIGMA</div>
           </a>
           <hr class="sidebar-divider my-0">
           <li class="nav-item active">

@@ -52,6 +52,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/lengkapi/my-profile/mahasiswa/{id}', [AdminController::class, 'lengkapiProfileMhs'])->name('admin.lengkapimyprofile');
     Route::put('/lengkapi/my-profile/mahasiswa/update', [AdminController::class, 'updateProfileMhs'])->name('admin.updatemyprofile');
     Route::delete('/del-admin', [AdminController::class, 'deleteUserAdmin'])->name('admin.deladmin');
+    
+    Route::delete('/del-akun-mhs', [AdminController::class, 'deleteAkunMhs'])->name('admin.delakunmhs');
 
 });
 

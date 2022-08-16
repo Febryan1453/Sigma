@@ -22,3 +22,10 @@ https://kawankoding.com/artikel/menonaktifkan-halaman-register-di-route-auth-lar
 
 Deploy Ke Heroku :
 https://www.youtube.com/watch?v=QOPGYVqrIsA
+
+Hapus Data Banyak :
+- https://www.rajaputramedia.com/artikel/hapus-banyak-data-sekaligus-dengan-php-mysql.php
+- https://id-laravel.com/post/interaksi-dengan-database/
+
+Paginator :
+https://tugasakhir.id/pagination-laravel/

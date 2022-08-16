@@ -14,6 +14,7 @@
   <link type="text/css" href="{{ asset ('RuangGuru/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <link type="text/css" href="{{ asset ('RuangGuru/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset ('RuangGuru/css/ruang-admin.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 
 <body id="page-top">
@@ -73,110 +74,9 @@
   <script src="{{ asset ('RuangGuru/js/ruang-admin.min.js') }}"></script>
   <script src="{{ asset ('RuangGuru/vendor/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset ('RuangGuru/js/demo/chart-area-demo.js') }}"></script>  
-  
-    <!-- Bootstrap Datepicker -->
-  <script src="{{ asset('RuangGuru/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-   <!-- ClockPicker -->
-  <script src="{{ asset('RuangGuru/vendor/clock-picker/clockpicker.js') }}"></script>
 
-  <script>
-    $(document).ready(function () {
-
-
-      $('.select2-single').select2();
-
-      // Select2 Single  with Placeholder
-      $('.select2-single-placeholder').select2({
-        placeholder: "Select a Province",
-        allowClear: true
-      });      
-
-      // Select2 Multiple
-      $('.select2-multiple').select2();
-
-      // Bootstrap Date Picker
-      $('#simple-date1 .input-group.date').datepicker({
-        format: 'dd/mm/yyyy',
-        todayBtn: 'linked',
-        todayHighlight: true,
-        autoclose: true,        
-      });
-
-      $('#simple-date2 .input-group.date').datepicker({
-        startView: 1,
-        format: 'dd/mm/yyyy',        
-        autoclose: true,     
-        todayHighlight: true,   
-        todayBtn: 'linked',
-      });
-
-      $('#simple-date3 .input-group.date').datepicker({
-        startView: 2,
-        format: 'dd/mm/yyyy',        
-        autoclose: true,     
-        todayHighlight: true,   
-        todayBtn: 'linked',
-      });
-
-      $('#simple-date4 .input-daterange').datepicker({        
-        format: 'dd/mm/yyyy',        
-        autoclose: true,     
-        todayHighlight: true,   
-        todayBtn: 'linked',
-      });    
-
-      // TouchSpin
-
-      $('#touchSpin1').TouchSpin({
-        min: 0,
-        max: 100,                
-        boostat: 5,
-        maxboostedstep: 10,        
-        initval: 0
-      });
-
-      $('#touchSpin2').TouchSpin({
-        min:0,
-        max: 100,
-        decimals: 2,
-        step: 0.1,
-        postfix: '%',
-        initval: 0,
-        boostat: 5,
-        maxboostedstep: 10
-      });
-
-      $('#touchSpin3').TouchSpin({
-        min: 0,
-        max: 100,
-        initval: 0,
-        boostat: 5,
-        maxboostedstep: 10,
-        verticalbuttons: true,
-      });
-
-      $('#clockPicker1').clockpicker({
-        donetext: 'Done'
-      });
-
-      $('#clockPicker2').clockpicker({
-        autoclose: true
-      });
-
-      let input = $('#clockPicker3').clockpicker({
-        autoclose: true,
-        'default': 'now',
-        placement: 'top',
-        align: 'left',
-      });
-
-      $('#check-minutes').click(function(e){        
-        e.stopPropagation();
-        input.clockpicker('show').clockpicker('toggleView', 'minutes');
-      });
-
-    });
-  </script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 </body>
 
 </html>

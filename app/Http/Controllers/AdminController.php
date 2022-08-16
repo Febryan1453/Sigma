@@ -13,7 +13,9 @@ use App\Models\Tugas;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -99,11 +101,42 @@ class AdminController extends Controller
     public function listMhs()
     {
         $title = "Data Mahasiswa";
-        $userMhs = User::where('role',0)->get();
+        $userMhs = User::where('role',0)->paginate(10);
         return view('layouts.admin.list-mhs',[
             'userMhs'     => $userMhs,
             'title'       => $title,
         ]);
+    }
+    
+    public function deleteAkunMhs(Request $request)
+    {
+        // Satu klik tombol maka aksinya ada 3 yaitu :
+
+        // 1. Hapus data hasil tugas mahasiswa dulu
+        // 2. Lalu hapus data mahasiswa
+        // 3. Terakhir hapus data user mahasiswa
+
+        // https://www.rajaputramedia.com/artikel/hapus-banyak-data-sekaligus-dengan-php-mysql.php
+        // https://id-laravel.com/post/interaksi-dengan-database/
+
+        // 1. Logic Hapus Tugas Mahasiswa
+        $tugasMhs       = HasilTugas::where('mahasiswa_id', $request->mahasiswa_id)->get();
+        $tugasIdMhs     = Arr::pluck($tugasMhs, 'id');        
+        $jmlTugasMhs    = count($tugasIdMhs);
+
+        for( $x = 0; $x < $jmlTugasMhs; $x++) {
+            DB::delete("delete from hasil_tugas where id = '$tugasIdMhs[$x]'");
+        }
+
+        // 2. Logic Hapus Data Mahasiswa (Tunggal)
+        $mhsId                  = Mahasiswa::findOrFail($request->mahasiswa_id);
+        $mhsId->delete();
+
+        // 3. Logic Hapus User Akses Mahasiswa
+        $idUserMhs              = User::findOrFail($request->id_user);
+        $idUserMhs->delete();
+
+        return redirect()->back()->with('Ok', "Data $request->name berhasil dihapus !");
     }
     
     public function detailMhs($id)
@@ -272,7 +305,7 @@ class AdminController extends Controller
 
     public function updateProfileMhs(MyProfileMhsAdminRequest $request)
     {
-        $mhs = Mahasiswa::findOrFail($request->id);
+        $mhs                    = Mahasiswa::findOrFail($request->id);
 
         $mhs->nim               = $request->nim;
         $mhs->name              = $request->name;
@@ -282,6 +315,7 @@ class AdminController extends Controller
         $mhs->gender            = $request->gender;
         $mhs->telp              = $request->telp;
         $mhs->alasan            = $request->alasan;
+        $mhs->isready           = 1;
 
         $mhs->update();
 
