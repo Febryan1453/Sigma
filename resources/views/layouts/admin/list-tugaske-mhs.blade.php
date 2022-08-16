@@ -4,17 +4,12 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
-          Periksa Tugas {{ $tugas->tugas_ke }} 
-          @if($tugas->status == 1)
-          <span class="badge badge-success">Ditugaskan</span>
-          @else
-          <span class="badge badge-danger">Pending</span>
-          @endif
+          Periksa Tugas          
         </h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Administrator</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Periksa Tugas {{ $tugas->tugas_ke }}</li>
+            <li class="breadcrumb-item active" aria-current="page">Periksa Tugas</li>
         </ol>
     </div>
 
@@ -28,13 +23,65 @@
                     <h6><i class="fas fa-check"></i><b> Berhasil !</b></h6>
                     {{Session::get('Ok')}}
                 </div>
-            @endif
+              @endif
+
+              <div class="card mb-4">
+                <div class="card-body">                  
+                  <div class="table-responsive">
+                    <table class="table align-items-center table-flush text-center">
+                      
+                        <tr>
+                          <td class="text-right" width="20%">Tugas Ke</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-left" style="font-weight: bold;">{{ $tugas->tugas_ke }}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" width="20%">Tanggal Tugas</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-justify" style="font-weight: bold;">
+                            {{ \Carbon\Carbon::parse($tugas->created_at)->translatedFormat('l, d F Y, H:i:s')}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" width="20%">Status Tugas</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-left">
+                            <h5>
+                              @if($tugas->status == 1)
+                              <span class="badge badge-success">Ditugaskan</span>
+                              @else
+                              <span class="badge badge-danger">Pending</span>
+                              @endif
+                            </h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" width="20%">Soal Tugas</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-justify">{{ $tugas->soal }}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" width="20%">Petunjuk Tugas</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-justify">{{ $tugas->petunjuk }}</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>                    
+                    </table>
+                  </div>
+                </div>
+              </div>
+
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">
-                    {{ $tugas->tugas_ke }} - ({{ $tugas->soal }})
+                    Tugas Masuk
                   </h6>
                 </div>
+
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush text-center">
                     <thead class="thead-light">
@@ -42,7 +89,6 @@
                         <th>Link</th>
                         <th>Nim / Nama</th>
                         <th>Kendala</th>
-                        <th>Tanggal Tugas</th>
                         <th>Tanggal Kirim</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -59,7 +105,6 @@
                             <td>{!! $info->code !!}</td>
                             <td>{{ $row->mhs->nim }} <br> {{ $row->mhs->name }}</td>
                             <td>{{ $row->kendala }}</td>
-                            <td>{{ \Carbon\Carbon::parse($row->tugas->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                             <td>{{ \Carbon\Carbon::parse($row->updated_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                             <td>
                                 @if($row->status == '1')
