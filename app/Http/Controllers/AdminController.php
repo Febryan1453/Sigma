@@ -252,10 +252,10 @@ class AdminController extends Controller
     
     public function periksaTugasMahasiswa(Request $request)
     {
-        $name = Auth::user()->name;
-
+        
         $addTugasMhs                = HasilTugas::findOrFail($request->id);
         $addTugasMhs->status        = $request->status;
+        $addTugasMhs->komentar      = $request->komentar;
         $addTugasMhs->update();
 
         return redirect()->back()->with('Ok', "Berhasil memeriksa tugas !");

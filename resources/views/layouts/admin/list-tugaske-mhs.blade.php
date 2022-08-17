@@ -90,6 +90,7 @@
                         <th>Nim / Nama</th>
                         <th>Kendala</th>
                         <th>Tanggal Kirim</th>
+                        <th>Saran</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -106,6 +107,13 @@
                             <td>{{ $row->mhs->nim }} <br> {{ $row->mhs->name }}</td>
                             <td>{{ $row->kendala }}</td>
                             <td>{{ \Carbon\Carbon::parse($row->updated_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
+                            <td>
+                                @if(empty($row->komentar))
+                                  <span class="badge badge-warning">Ditunggu</span>
+                                @else
+                                  {{ $row->komentar }}
+                                @endif
+                            </td>
                             <td>
                                 @if($row->status == '1')
                                 <span class="badge badge-warning">Diperiksa</span>

@@ -15,8 +15,7 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
-                  <button type="submit" class="btn btn-danger">Hapus</button>
+                  <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
                 </div>
               </div>
             </div>

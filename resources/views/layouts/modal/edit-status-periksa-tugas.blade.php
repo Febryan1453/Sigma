@@ -13,6 +13,12 @@
                         @csrf
                         @method('PUT')
                         <input value="{{ $row->id }}" name="id" type="hidden"/>
+
+                        <div class="form-group">
+                            <label for="soal">Saran Untuk Mahasiswa</label>
+                            <textarea class="form-control" name="komentar" id="soal" rows="3">{{ old('soal') }}</textarea>
+                        </div>
+
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" class="form-control @error('status') is-invalid @enderror" id="status">

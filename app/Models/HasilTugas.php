@@ -16,6 +16,7 @@ class HasilTugas extends Model
         'link_tugas',
         'kendala',
         'status',
+        'komentar',
     ];
 
     public $incrementing = false;

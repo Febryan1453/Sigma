@@ -38,6 +38,7 @@
                         <th>Kendala</th>
                         <th>Tanggal Tugas</th>
                         <th>Tanggal Dikirim</th>
+                        <th>Saran</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -58,6 +59,13 @@
                               <td>{{ $row->kendala }}</td>
                               <td>{{ \Carbon\Carbon::parse($row->tugas->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                               <td>{{ \Carbon\Carbon::parse($row->updated_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
+                              <td>
+                                @if(empty($row->komentar))
+                                  <span class="badge badge-warning">Tunggu</span>
+                                @else
+                                  {{ $row->komentar }}
+                                @endif
+                              </td>
                               <td>
                                 @if($row->status == '1')
                                 <span class="badge badge-warning">Diperiksa</span>
