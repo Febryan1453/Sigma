@@ -36,6 +36,7 @@
                         <th>Soal</th>
                         <th>Petunjuk Soal</th>
                         <th>Tanggal Tugas</th>
+                        <th>Deadline</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -46,15 +47,27 @@
                             <td>{{ $row->tugas_ke }}</td>
                             <td>{{ $row->soal }}</td>
                             <td>{{ $row->petunjuk }}</td>
-                            <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
+                            <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('d F Y, H:i:s')}}</td>
+                            <td style="color: #ffa426; font-weight:bold;">
+                            {{ \Carbon\Carbon::parse($row->deadline)->translatedFormat('d F Y,')}} {{$row->jam_deadline}}
+                            </td>
                             <td>
                               @if($row->status == '1')
                               <span class="badge badge-success">Ditugaskan</span>
                               @else
-                              <span class="badge badge-danger">Pending</span>
+                              <span class="badge badge-danger">Deadline</span>
                               @endif
                             </td>
-                            <td><a href="{{ route('mhs.addtugassaya',$row->id) }}" class="btn btn-sm btn-primary">Kerjakan</a></td>
+                            <td>
+                              @if($row->status == '1')
+                              <a href="{{ route('mhs.addtugassaya',$row->id) }}" class="btn btn-sm btn-primary">Kerjakan</a>
+                              @else
+                              <button style="cursor:not-allowed;" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#deadlineTugas{{$row->id}}" id="#myBtn">
+                                  Kerjakan
+                              </button>
+                              @endif                              
+                            </td>
+                            @include('layouts.modal.deadline')
                         </tr>
                         @empty
                         <tr>

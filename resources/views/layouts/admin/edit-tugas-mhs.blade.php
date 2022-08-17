@@ -61,6 +61,26 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="deadline">Tanggal Deadline</label>
+                            <input type="date" value="{{ $editTugas->deadline }}" name="deadline" class="form-control @error('deadline') is-invalid @enderror" id="deadline">
+                            @error('deadline')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jam_deadline">Jam Deadline</label>
+                            <input type="text" value="{{ $editTugas->jam_deadline }}" name="jam_deadline" class="form-control @error('jam_deadline') is-invalid @enderror" id="jam_deadline" placeholder="Contoh : 23:00 WIB">
+                            @error('jam_deadline')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="soal">Soal</label>
                             <textarea class="form-control @error('soal') is-invalid @enderror" name="soal" id="soal" rows="3">{{ $editTugas->soal }}</textarea>
                             @error('soal')
@@ -81,7 +101,6 @@
                         </div>
 
                         <hr class="sidebar-divider">
-
                         <button type="submit" class="btn btn-primary">Submit Data</button>
                     </form>
                 </div>

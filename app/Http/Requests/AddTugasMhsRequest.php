@@ -26,6 +26,8 @@ class AddTugasMhsRequest extends FormRequest
         return [
             'tugas_ke'                   => 'required|unique:tugas',
             'jurusan'                    => 'required',
+            'deadline'                   => 'required',
+            'jam_deadline'               => 'required',
             'soal'                       => 'required|min:10',
             'petunjuk'                   => 'required|min:10',
         ];
@@ -38,6 +40,10 @@ class AddTugasMhsRequest extends FormRequest
             'tugas_ke.required'          => 'Urutan tugas dibutuhkan !',
 
             'jurusan.required'           => 'Jurusan dibutuhkan !',
+
+            'deadline.required'          => 'Tanggal deadline dibutuhkan !',
+
+            'jam_deadline.required'      => 'Jam deadline dibutuhkan !',
 
             'soal.required'              => 'Soal dibutuhkan !',
             'soal.min'                   => 'Soal minimal 10 karakter !',

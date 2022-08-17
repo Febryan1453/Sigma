@@ -59,6 +59,26 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="deadline">Tanggal Deadline</label>
+                            <input type="date" value="{{ old('deadline') }}" name="deadline" class="form-control @error('deadline') is-invalid @enderror" id="deadline">
+                            @error('deadline')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jam_deadline">Jam Deadline</label>
+                            <input type="text" value="{{ old('jam_deadline') }}" name="jam_deadline" class="form-control @error('jam_deadline') is-invalid @enderror" id="jam_deadline" placeholder="Contoh : 23:00 WIB">
+                            @error('jam_deadline')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="soal">Soal</label>
                             <textarea class="form-control @error('soal') is-invalid @enderror" name="soal" id="soal" rows="3">{{ old('soal') }}</textarea>
                             @error('soal')

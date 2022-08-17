@@ -17,7 +17,7 @@
                             <label for="status">Status</label>
                             <select name="status" class="form-control @error('status') is-invalid @enderror" id="status">
                                 <option value="1" @if ($row->status == "1") {{ 'selected' }} @endif>Ditugaskan</option>
-                                <option value="2" @if ($row->status == "2") {{ 'selected' }} @endif>Pending</option>
+                                <option value="2" @if ($row->status == "2") {{ 'selected' }} @endif>Deadline</option>
                             </select>
                             @error('status')
                                 <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                         <span class="badge badge-success">Ditugaskan</span> : Ditugaskan ke mahasiswa
                     </div>
                     <div>
-                        <span class="badge badge-danger">Pending</span> : Mahasiswa tidak bisa mengirim tugas lagi
+                        <span class="badge badge-danger">Deadline</span> : Mahasiswa tidak bisa mengirim tugas lagi
                     </div>
                 </div>
                 <div class="modal-footer">

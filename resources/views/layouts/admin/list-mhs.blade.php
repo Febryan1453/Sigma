@@ -24,8 +24,8 @@
                   <table class="table align-items-center table-flush text-center" id="dataTable">
                     <thead class="thead-light">
                       <tr>
-                        <th>Nim</th>
-                        <th>Alamat Email</th>
+                        <!-- <th>Nim</th> -->
+                        <th>Email</th>
                         <th>Nama</th>
                         <th>JK</th>
                         <th>Jurusan</th>
@@ -36,7 +36,7 @@
                     <tbody>
                         @forelse($userMhs as $row)
                         <tr>
-                            <td>{{ $row->mahasiswa->nim }}</td>
+                            <!-- <td>{{ $row->mahasiswa->nim }}</td> -->
                             <td><a href="#">{{ $row->email }}</a></td>
                             <td>{{ $row->mahasiswa->name }}</td>
                             <td>{{ $row->mahasiswa->gender }}</td>

@@ -15,6 +15,7 @@ class Tugas extends Model
         'soal',
         'petunjuk',
         'deadline',
+        'jam_deadline',
         'jurusan',
         'status',
     ];

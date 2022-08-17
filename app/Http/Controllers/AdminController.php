@@ -180,6 +180,8 @@ class AdminController extends Controller
         $addTugasMhs->soal          = $request->soal;
         $addTugasMhs->jurusan       = $request->jurusan;
         $addTugasMhs->petunjuk      = $request->petunjuk;
+        $addTugasMhs->deadline      = $request->deadline;
+        $addTugasMhs->jam_deadline  = $request->jam_deadline;
         $addTugasMhs->status        = 1;
         $addTugasMhs->save();
 
@@ -220,6 +222,8 @@ class AdminController extends Controller
         $addTugasMhs->soal          = $request->soal;
         $addTugasMhs->jurusan       = $request->jurusan;
         $addTugasMhs->petunjuk      = $request->petunjuk;
+        $addTugasMhs->deadline      = $request->deadline;
+        $addTugasMhs->jam_deadline  = $request->jam_deadline;
         $addTugasMhs->update();
 
         return redirect()->route('admin.listtugasmhs')->with('Ok', "$name, Mengubah tugas $request->tugas_ke untuk mahasiswa $request->jurusan !");

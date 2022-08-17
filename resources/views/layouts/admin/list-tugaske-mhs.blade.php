@@ -43,6 +43,13 @@
                           </td>
                         </tr>
                         <tr>
+                          <td class="text-right" width="20%">Deadline Tugas</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-justify" style="color: #ffa426; font-weight:bold;">
+                            {{ \Carbon\Carbon::parse($tugas->deadline)->translatedFormat('l, d F Y,')}} {{ $tugas->jam_deadline }}
+                          </td>
+                        </tr>
+                        <tr>
                           <td class="text-right" width="20%">Status Tugas</td> 
                           <td width="1%">:</td> 
                           <td width="auto" class="text-left">

@@ -32,8 +32,9 @@
                       <tr>
                         <th>Tugas Ke</th>
                         <th>Soal</th>
-                        <th>Petunjuk Soal</th>
+                        <th>Petunjuk</th>
                         <th>Tanggal Tugas</th>
+                        <th>Deadline</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -44,12 +45,16 @@
                             <td><a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}</a></td>
                             <td>{{ $row->soal }}</td>
                             <td>{{ $row->petunjuk }}</td>
-                            <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
+                            <!-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td> -->
+                            <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('d F Y, H:i:s')}}</td>
+                            <td style="color: #ffa426; font-weight:bold;">
+                            {{ \Carbon\Carbon::parse($row->deadline)->translatedFormat('d F Y,')}} {{$row->jam_deadline}}
+                            </td>
                             <td>
                               @if($row->status == 1)
                               <span class="badge badge-success">Ditugaskan</span>
                               @else
-                              <span class="badge badge-danger">Pending</span>
+                              <span class="badge badge-danger">Deadline</span>
                               @endif
                             </td>
                             <td>
