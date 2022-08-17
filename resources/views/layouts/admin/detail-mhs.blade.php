@@ -148,7 +148,7 @@
                               <td>{{ $row->tugas->soal }}</td>
                               <td>{{ $row->kendala }}</td>
                               <td>{{ \Carbon\Carbon::parse($row->tugas->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
-                              <td>{{ \Carbon\Carbon::parse($row->tugas->updated_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
+                              <td>{{ \Carbon\Carbon::parse($row->updated_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                               <td>
                                 @if($row->status == '1')
                                 <span class="badge badge-warning">Diperiksa</span>
