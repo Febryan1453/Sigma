@@ -29,6 +29,7 @@
                         <th>Nama</th>
                         <th>JK</th>
                         <th>Jurusan</th>
+                        <th>Tugas</th>
                         <th>Profil</th>
                         <th>Action</th>
                       </tr>
@@ -41,6 +42,12 @@
                             <td>{{ $row->mahasiswa->name }}</td>
                             <td>{{ $row->mahasiswa->gender }}</td>
                             <td style="text-transform: uppercase;">{{ $row->mahasiswa->jurusan }}</td>
+                            <td>
+                              <?php
+                                $jumlahTugas = App\Models\HasilTugas::where('mahasiswa_id', $row->mahasiswa->id)->count();
+                              ?>
+                              {{ $jumlahTugas }}
+                            </td>
                             <td>
                               @if($row->mahasiswa->isready == 0)
                               <span class="badge badge-danger">No</span>
