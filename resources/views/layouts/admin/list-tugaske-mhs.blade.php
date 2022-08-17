@@ -86,8 +86,8 @@
                   <table class="table align-items-center table-flush text-center">
                     <thead class="thead-light">
                       <tr>
-                        <th>Link</th>
-                        <th>Nim / Nama</th>
+                        <th>Link / Mahasiswa</th>
+                        <!-- <th>Nim / Nama</th> -->
                         <th>Kendala</th>
                         <th>Tanggal Kirim</th>
                         <th>Saran</th>
@@ -103,8 +103,12 @@
                               $info = $embed->get($row->link_tugas);
                         ?>
                         <tr>
-                            <td>{!! $info->code !!}</td>
-                            <td>{{ $row->mhs->nim }} <br> {{ $row->mhs->name }}</td>
+                            <td>
+                              {!! $info->code !!} <br>
+                              {{ $row->mhs->nim }} <br> 
+                              {{ $row->mhs->name }}
+                            </td>
+                            <!-- <td>{{ $row->mhs->nim }} <br> {{ $row->mhs->name }}</td> -->
                             <td>{{ $row->kendala }}</td>
                             <td>{{ \Carbon\Carbon::parse($row->updated_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                             <td>
