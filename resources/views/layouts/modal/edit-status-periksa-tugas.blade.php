@@ -16,7 +16,7 @@
 
                         <div class="form-group">
                             <label for="soal">Saran Untuk Mahasiswa</label>
-                            <textarea class="form-control" name="komentar" id="soal" rows="3">{{ old('soal') }}</textarea>
+                            <textarea class="form-control" name="komentar" id="soal" rows="3">{{ $row->komentar }}</textarea>
                         </div>
 
                         <div class="form-group">
