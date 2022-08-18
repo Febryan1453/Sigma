@@ -57,7 +57,7 @@
                               @if($tugas->status == 1)
                               <span class="badge badge-success">Ditugaskan</span>
                               @else
-                              <span class="badge badge-danger">Pending</span>
+                              <span class="badge badge-danger">Deadline</span>
                               @endif
                             </h5>
                           </td>
