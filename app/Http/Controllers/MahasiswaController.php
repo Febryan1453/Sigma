@@ -83,8 +83,8 @@ class MahasiswaController extends Controller
 
         if($jurusan == 'rpl'){
 
-        // $tugasMhs = Tugas::where('jurusan', 'rpl')->where('status', '1')->get();
-        $tugasMhs = Tugas::where('jurusan', 'rpl')->get();
+        $tugasMhs = Tugas::where('jurusan', 'rpl')->where('status', '1')->get();
+        // $tugasMhs = Tugas::where('jurusan', 'rpl')->get();
         return view('layouts.mhs.lihat-tugas',[
             'tugasMhs'     => $tugasMhs,
             'title'        => $title,
@@ -92,8 +92,8 @@ class MahasiswaController extends Controller
 
         }elseif($jurusan == 'tkj'){
 
-        // $tugasMhs = Tugas::where('jurusan', 'tkj')->where('status', '1')->get();
-        $tugasMhs = Tugas::where('jurusan', 'tkj')->get();
+        $tugasMhs = Tugas::where('jurusan', 'tkj')->where('status', '1')->get();
+        // $tugasMhs = Tugas::where('jurusan', 'tkj')->get();
         return view('layouts.mhs.lihat-tugas',[
             'tugasMhs'     => $tugasMhs,
             'title'           => $title,
@@ -101,8 +101,8 @@ class MahasiswaController extends Controller
 
         }else{
 
-        // $tugasMhs = Tugas::where('jurusan', 'dmm')->where('status', '1')->get();
-        $tugasMhs = Tugas::where('jurusan', 'dmm')->get();
+        $tugasMhs = Tugas::where('jurusan', 'dmm')->where('status', '1')->get();
+        // $tugasMhs = Tugas::where('jurusan', 'dmm')->get();
         return view('layouts.mhs.lihat-tugas',[
             'tugasMhs'     => $tugasMhs,
             'title'           => $title,

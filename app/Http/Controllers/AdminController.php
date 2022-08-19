@@ -192,9 +192,12 @@ class AdminController extends Controller
     public function listTugasMahasiswa()
     {
         $title = "Tugas Mahasiswa";
-        $tugasMhsRpl = Tugas::where('jurusan','rpl')->get();
-        $tugasMhsTkj = Tugas::where('jurusan','tkj')->get();
-        $tugasMhsDmm = Tugas::where('jurusan','dmm')->get();
+        // $tugasMhsRpl = Tugas::where('jurusan','rpl')->get();
+        $tugasMhsRpl = Tugas::where('jurusan','rpl')->paginate(5);
+        // $tugasMhsTkj = Tugas::where('jurusan','tkj')->get();
+        $tugasMhsTkj = Tugas::where('jurusan','tkj')->paginate(5);
+        // $tugasMhsDmm = Tugas::where('jurusan','dmm')->get();
+        $tugasMhsDmm = Tugas::where('jurusan','dmm')->paginate(5);
         
         return view('layouts.admin.list-tugas-mhs',[
             'tugasMhsRpl'     => $tugasMhsRpl,

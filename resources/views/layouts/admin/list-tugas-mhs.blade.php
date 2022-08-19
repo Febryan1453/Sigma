@@ -76,7 +76,7 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="card-footer"></div>
+                <div class="card-footer">{{ $tugasMhsRpl->links() }}</div>
               </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="card-footer"></div>
+                <div class="card-footer">{{ $tugasMhsTkj->links() }}</div>
               </div>
             </div>
         </div>
@@ -188,7 +188,7 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="card-footer"></div>
+                <div class="card-footer">{{ $tugasMhsDmm->links() }}</div>
               </div>
             </div>
         </div>

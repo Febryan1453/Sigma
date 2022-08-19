@@ -10,8 +10,10 @@
                 </div>
                 <div class="modal-body">
                         <div class="text-center">
-                          Klik link tugas untuk selengkapnya <br>
-                          <a target="_blank" href="{{ $row->link_tugas }}">{{ $row->link_tugas }}</a>
+                          Judul video<br>
+                          <strong>{{ $info->title }}</strong><br><br>
+                          Link video<br>
+                          <a target="_blank" href="{{ $row->link_tugas }}"><strong>{{ $row->link_tugas }}</strong></a>
                         </div>
                 </div>
                 <div class="modal-footer">
