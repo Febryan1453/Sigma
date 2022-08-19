@@ -10,8 +10,8 @@
                 </div>
                 <div class="modal-body">
                         <div class="text-center">
-                          Judul video<br>
-                          <strong>{{ $info->title }}</strong><br><br>
+                          <!-- Judul video<br>
+                          <strong>{{ $info->title }}</strong><br><br> -->
                           Link video<br>
                           <a target="_blank" href="{{ $row->link_tugas }}"><strong>{{ $row->link_tugas }}</strong></a>
                         </div>
