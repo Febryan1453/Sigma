@@ -67,12 +67,12 @@
                         <tr>
                           <td class="text-right" width="20%">Soal Tugas</td> 
                           <td width="1%">:</td> 
-                          <td width="auto" class="text-justify">{{ $tugas->soal }}</td>
+                          <td width="auto" class="text-justify">{!! $tugas->soal !!}</td>
                         </tr>
                         <tr>
                           <td class="text-right" width="20%">Petunjuk Tugas</td> 
                           <td width="1%">:</td> 
-                          <td width="auto" class="text-justify">{{ $tugas->petunjuk }}</td>
+                          <td width="auto" class="text-justify">{!! $tugas->petunjuk !!}</td>
                         </tr>
                         <tr>
                           <td></td>
@@ -118,13 +118,13 @@
                               {{ $row->mhs->name }}
                             </td>
                             <!-- <td>{{ $row->mhs->nim }} <br> {{ $row->mhs->name }}</td> -->
-                            <td>{{ $row->kendala }}</td>
+                            <td>{!! $row->kendala !!}</td>
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                             <td>
                                 @if(empty($row->komentar))
                                   <span class="badge badge-warning">Ditunggu</span>
                                 @else
-                                  {{ $row->komentar }}
+                                  {!! $row->komentar !!}
                                 @endif
                             </td>
                             <td>
