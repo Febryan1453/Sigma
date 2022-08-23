@@ -29,3 +29,6 @@ Hapus Data Banyak :
 
 Paginator :
 https://tugasakhir.id/pagination-laravel/
+
+Kedip - kedip Teks :
+https://www.carawebs.info/2012/12/cara-membuat-tulisan-berkedip.html

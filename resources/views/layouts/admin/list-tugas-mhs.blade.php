@@ -47,8 +47,8 @@
                             <td>{{ $row->petunjuk }}</td>
                             <!-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td> -->
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('d F Y, H:i:s')}}</td>
-                            <td style="color: #ffa426; font-weight:bold;">
-                            {{ \Carbon\Carbon::parse($row->deadline)->translatedFormat('d F Y,')}} {{$row->jam_deadline}}
+                            <td style="color: #ffa426; font-weight:bold;">                            
+                              {{ \Carbon\Carbon::parse($row->deadline)->translatedFormat('d F Y,')}} {{$row->jam_deadline}}                           
                             </td>
                             <td>
                               @if($row->status == 1)

@@ -15,6 +15,24 @@
   <link type="text/css" href="{{ asset ('RuangGuru/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset ('RuangGuru/css/ruang-admin.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+  <style>
+    .blink {
+      animation: blink-animation 2s steps(5, start) infinite;
+      -webkit-animation: blink-animation 2s steps(5, start) infinite;
+    }
+    @keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+</style>
+
 </head>
 
 <body id="page-top">
@@ -77,6 +95,13 @@
 
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+  <script>
+    setInterval(function(){
+        $(".berkedip").toggle();
+    },900);
+  </script>
 </body>
 
 </html>

@@ -46,7 +46,9 @@
                           <td class="text-right" width="20%">Deadline Tugas</td> 
                           <td width="1%">:</td> 
                           <td width="auto" class="text-justify" style="color: #ffa426; font-weight:bold;">
-                            {{ \Carbon\Carbon::parse($tugas->deadline)->translatedFormat('l, d F Y,')}} {{ $tugas->jam_deadline }}
+                          <span class="berkedip">
+                            {{ \Carbon\Carbon::parse ($tugas->deadline)->translatedFormat('l, d F Y,')}} {{ $tugas->jam_deadline }}
+                          </span>
                           </td>
                         </tr>
                         <tr>
