@@ -45,8 +45,8 @@
                         @forelse($tugasMhs as $row)
                         <tr>
                             <td>{{ $row->tugas_ke }}</td>
-                            <td>{!! $row->soal !!}</td>
-                            <td>{!! $row->petunjuk !!}</td>
+                            <td style="text-align: left;">{!! $row->soal !!}</td>
+                            <td style="text-align: left;">{!! $row->petunjuk !!}</td>
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('d F Y, H:i:s')}}</td>
                             <td style="color: #ffa426; font-weight:bold;">
                                 <span class="blink">

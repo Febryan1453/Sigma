@@ -142,21 +142,21 @@
                           ?>
                           <tr>
                               <td>{{ $row->tugas->tugas_ke }}</td>
-                              <td>
+                              <td style="text-align: left;">
                                   {!! $info->code !!} 
                                   <!-- <br/> {{ $info->title }} -->
                                   <br>
-                                  {{ $row->tugas->soal }}
+                                  {!! $row->tugas->soal !!}
                               </td>
                               <!-- <td>{{ $row->tugas->soal }}</td> -->
-                              <td>{{ $row->kendala }}</td>
+                              <td style="text-align: left;">{!! $row->kendala !!}</td>
                               <td>{{ \Carbon\Carbon::parse($row->tugas->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                               <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td>
                               <td>
                                 @if(empty($row->komentar))
                                   <span class="badge badge-warning">Ditunggu</span>
                                 @else
-                                  {{ $row->komentar }}
+                                  {!! $row->komentar !!}
                                 @endif
                               </td>
                               <td>

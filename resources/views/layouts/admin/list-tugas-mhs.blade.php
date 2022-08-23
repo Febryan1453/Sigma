@@ -43,8 +43,8 @@
                         @forelse($tugasMhsRpl as $row)
                         <tr>
                             <td><a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}</a></td>
-                            <td>{!! $row->soal !!}</td>
-                            <td>{!! $row->petunjuk !!}</td>
+                            <td style="text-align: left;">{!! $row->soal !!}</td>
+                            <td style="text-align: left;">{!! $row->petunjuk !!}</td>
                             <!-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td> -->
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('d F Y, H:i:s')}}</td>
                             <td style="color: #ffa426; font-weight:bold;">                            
@@ -103,8 +103,8 @@
                         @forelse($tugasMhsTkj as $row)
                         <tr>
                             <td><a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}</a></td>
-                            <<td>{!! $row->soal !!}</td>
-                            <td>{!! $row->petunjuk !!}</td>
+                            <<td style="text-align: left;">{!! $row->soal !!}</td>
+                            <td style="text-align: left;">{!! $row->petunjuk !!}</td>
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y')}}</td>
                             <td>
                               @if($row->status == 1)
@@ -158,8 +158,8 @@
                         @forelse($tugasMhsDmm as $row)
                         <tr>
                             <td><a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}</a></td>
-                            <td>{!! $row->soal !!}</td>
-                            <td>{!! $row->petunjuk !!}</td>
+                            <td style="text-align: left;">{!! $row->soal !!}</td>
+                            <td style="text-align: left;">{!! $row->petunjuk !!}</td>
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y')}}</td>
                             <td>
                               @if($row->status == 1)
