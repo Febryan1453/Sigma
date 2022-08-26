@@ -144,7 +144,7 @@ class MahasiswaController extends Controller
         $name = Auth::user()->mahasiswa->name;
         $title = "Tugas Selesai - $name";
 
-        $hasiltugas = HasilTugas::where('mahasiswa_id',Auth::user()->mahasiswa->id)->get();
+        $hasiltugas = HasilTugas::where('mahasiswa_id',Auth::user()->mahasiswa->id)->orderBy('created_at', 'DESC')->get();
         return view('layouts.mhs.tugas-selesai',[
             'hasiltugas'     => $hasiltugas,
             'title'           => $title,
