@@ -328,5 +328,31 @@ class AdminController extends Controller
 
         return redirect()->route('admin.detailmhs',$mhs->user_id)->with('Ok', "Profile berhasil diupdate !");
     }
+
+    public function deleteTugasId()
+    {
+        $title = "Delete Tugas Mahasiswa";
+        return view('layouts.admin.del-tugas-id', compact('title'));
+    }
+
+    public function actionDeleteTugasId(Request $request)
+    {
+        $idHasil = $request->id_tugas;
+
+        if(empty($idHasil)){
+            return redirect()->route('admin.deltugasid')->with('Failed', "ID Jangan Kosong !");
+        }else{
+            $tugasHapus = HasilTugas::where('id', $idHasil)->first();
+            if(!empty($tugasHapus->id)){
+                $hapus = HasilTugas::findOrFail($tugasHapus->id);
+                $namaMhs = $hapus->mhs->name;
+                $tugasKe = $hapus->tugas->tugas_ke;
+                $hapus->delete();
+                return redirect()->route('admin.deltugasid')->with('Ok', "Tugas $namaMhs yang ke $tugasKe berhasil dihapus !");
+            }else{
+                return redirect()->route('admin.deltugasid')->with('Failed', "ID Tidak Ditemukan !");
+            }
+        }
+    }
     
 }

@@ -86,6 +86,14 @@
             </a>
           </li>
 
+          <li class="nav-item {{request()->routeIs('admin.deltugasid') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route ('admin.deltugasid') }}">
+              <!-- <i class="fas fa-fw fa-chart-area"></i> -->
+              <i class="fa-solid fa-trash"></i>
+              <span>Delete Tugas ID</span>
+            </a>
+          </li>
+
       @endif
 
       <!-- <li class="nav-item">

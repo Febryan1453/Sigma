@@ -54,7 +54,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::delete('/del-admin', [AdminController::class, 'deleteUserAdmin'])->name('admin.deladmin');
     
     Route::delete('/del-akun-mhs', [AdminController::class, 'deleteAkunMhs'])->name('admin.delakunmhs');
-
+    
+    Route::get('/del-tugas-id', [AdminController::class, 'deleteTugasId'])->name('admin.deltugasid');
+    Route::delete('/delete-id', [AdminController::class, 'actionDeleteTugasId'])->name('admin.actiondeltugasid');
 });
 
 
