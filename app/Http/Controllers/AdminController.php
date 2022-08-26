@@ -151,7 +151,7 @@ class AdminController extends Controller
         $m = $toDay->diff($tglLahir)->m;
         $d = $toDay->diff($tglLahir)->d;
 
-        $hasiltugas = HasilTugas::where('mahasiswa_id', $detailUserMhs->id)->get();
+        $hasiltugas = HasilTugas::where('mahasiswa_id', $detailUserMhs->id)->orderBy('created_at', 'DESC')->get();
 
         return view('layouts.admin.detail-mhs',[
             'detailUserMhs'     => $detailUserMhs,
@@ -193,11 +193,11 @@ class AdminController extends Controller
     {
         $title = "Tugas Mahasiswa";
         // $tugasMhsRpl = Tugas::where('jurusan','rpl')->get();
-        $tugasMhsRpl = Tugas::where('jurusan','rpl')->paginate(5);
+        $tugasMhsRpl = Tugas::where('jurusan','rpl')->orderBy('tugas_ke', 'DESC')->paginate(5);
         // $tugasMhsTkj = Tugas::where('jurusan','tkj')->get();
-        $tugasMhsTkj = Tugas::where('jurusan','tkj')->paginate(5);
+        $tugasMhsTkj = Tugas::where('jurusan','tkj')->orderBy('tugas_ke', 'DESC')->paginate(5);
         // $tugasMhsDmm = Tugas::where('jurusan','dmm')->get();
-        $tugasMhsDmm = Tugas::where('jurusan','dmm')->paginate(5);
+        $tugasMhsDmm = Tugas::where('jurusan','dmm')->orderBy('tugas_ke', 'DESC')->paginate(5);
         
         return view('layouts.admin.list-tugas-mhs',[
             'tugasMhsRpl'     => $tugasMhsRpl,
