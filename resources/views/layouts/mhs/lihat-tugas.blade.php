@@ -62,7 +62,7 @@
                             </td>
                             <td>
                               @if($row->status == '1')
-                              <a href="{{ route('mhs.addtugassaya',$row->id) }}" class="btn btn-sm btn-primary">Kerjakan</a>
+                                <a href="{{ route('mhs.addtugassaya',$row->id) }}" class="btn btn-sm btn-primary">Kerjakan</a>
                               @else
                               <button style="cursor:not-allowed;" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deadlineTugas{{$row->id}}" id="#myBtn">
                                   Kerjakan
