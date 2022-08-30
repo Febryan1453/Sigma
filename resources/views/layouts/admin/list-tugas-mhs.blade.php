@@ -42,7 +42,12 @@
                     <tbody>
                         @forelse($tugasMhsRpl as $row)
                         <tr>
-                            <td><a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}</a></td>
+                            <td>
+                              <?php
+                              $count = App\Models\HasilTugas::where('tugas_id',$row->id)->count();
+                              ?>
+                              <a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}<span class="badge bg-success text-white">{{ $count }}</span></a>
+                            </td>
                             <td style="text-align: left;">{!! $row->soal !!}</td>
                             <td style="text-align: left;">{!! $row->petunjuk !!}</td>
                             <!-- <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y, H:i:s')}}</td> -->
@@ -102,7 +107,12 @@
                     <tbody>
                         @forelse($tugasMhsTkj as $row)
                         <tr>
-                            <td><a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}</a></td>
+                            <td>
+                              <?php
+                              $count = App\Models\HasilTugas::where('tugas_id',$row->id)->count();
+                              ?>
+                              <a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}<span class="badge bg-success text-white">{{ $count }}</span></a>
+                            </td>
                             <<td style="text-align: left;">{!! $row->soal !!}</td>
                             <td style="text-align: left;">{!! $row->petunjuk !!}</td>
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y')}}</td>
@@ -157,7 +167,12 @@
                     <tbody>
                         @forelse($tugasMhsDmm as $row)
                         <tr>
-                            <td><a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}</a></td>
+                            <td>
+                              <?php
+                              $count = App\Models\HasilTugas::where('tugas_id',$row->id)->count();
+                              ?>
+                              <a href="{{ route('admin.lihattugasmhs',$row->id) }}">{{ $row->tugas_ke }}<span class="badge bg-success text-white">{{ $count }}</span></a>
+                            </td>
                             <td style="text-align: left;">{!! $row->soal !!}</td>
                             <td style="text-align: left;">{!! $row->petunjuk !!}</td>
                             <td>{{ \Carbon\Carbon::parse($row->created_at)->translatedFormat('l, d F Y')}}</td>
