@@ -36,11 +36,11 @@
                     <tbody>
                         @forelse($materi as $row)
                         <tr>
-                            <td>{{ $row->jurusan }}</td>
+                            <td style="text-transform: uppercase;">{{ $row->jurusan }}</td>
                             
                             <td>{{ \Carbon\Carbon::parse($row->tgl_materi)->translatedFormat('l, d F Y')}}</td>
-                            <td>{{ $row->nama_materi }} <br> oleh: {{ $row->dosen }}</td>
-                            <td>{!! $row->rincian_materi !!}</td>
+                            <td style="text-align: left;">{{ $row->nama_materi }} <br> oleh: {{ $row->dosen }}</td>
+                            <td style="text-align: left;">{!! $row->rincian_materi !!}</td>
                             <!-- <td>{{ $row->link_materi }}</td> -->
                             <td>
                                 <a href="{{ route('admin.edit.materi',$row->id) }}" class="btn btn-sm btn-primary">
