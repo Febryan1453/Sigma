@@ -44,7 +44,7 @@
                             <!-- <td>{{ $row->link_materi }}</td> -->
                             <td>
                                 <a href="{{ route('admin.edit.materi',$row->id) }}" class="btn btn-sm btn-primary">
-                                    <i class="fa-solid fa-eye"></i>
+                                    <i class="fa-solid fa-pencil"></i>
                                 </a>
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMateri{{$row->id}}" id="#myBtn">
                                     <i class="fa-solid fa-trash"></i>
