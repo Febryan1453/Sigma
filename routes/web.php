@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MateriController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Embed\Embed;
@@ -57,6 +58,18 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     
     Route::get('/del-tugas-id', [AdminController::class, 'deleteTugasId'])->name('admin.deltugasid');
     Route::delete('/delete-id', [AdminController::class, 'actionDeleteTugasId'])->name('admin.actiondeltugasid');
+    
+    // Materi Dibawakan
+    Route::get('/materi', [MateriController::class, 'materi'])->name('admin.materi');
+
+    Route::get('/materi/baru', [MateriController::class, 'addMateri'])->name('admin.add.materi');
+    Route::post('/materi/baru/store', [MateriController::class, 'storeMateri'])->name('admin.store.materi');
+    
+    Route::get('/materi/edit/{id}', [MateriController::class, 'editMateri'])->name('admin.edit.materi');
+    Route::put('/materi/edit/save', [MateriController::class, 'saveMateri'])->name('admin.save.materi');
+    
+    Route::delete('/materi/delete', [MateriController::class, 'delMateri'])->name('admin.del.materi');
+
 });
 
 
@@ -78,7 +91,10 @@ Route::prefix('mahasiswa')->middleware(['auth','isMhs'])->group(function(){
     Route::put('/save/edit-tugas-saya', [MahasiswaController::class, 'updateTugasSaya'])->name('mhs.updatetugassaya');
     Route::get('/ganti-password', [MahasiswaController::class, 'gantiPass'])->name('mhs.gantipass');
     Route::put('/proses-ganti-password', [MahasiswaController::class, 'prosesGantiPass'])->name('mhs.prosesgantipass');
-   
+    
+    Route::get('/materi', [MahasiswaController::class, 'materi'])->name('mhs.materi');
+
+
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

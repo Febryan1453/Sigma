@@ -86,6 +86,26 @@
             </a>
           </li>
 
+          <li class="nav-item
+            @if(request()->routeIs('admin.add.materi'))
+              active
+            @elseif(request()->routeIs('admin.materi'))
+              active
+            @endif
+          ">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+              <i class="fab fa-fw fa-wpforms"></i>
+              <span>Materi</span>
+            </a>
+            <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Materi</h6>
+                <a class="collapse-item {{request()->routeIs('admin.materi') ? 'active' : '' }}" href="{{route('admin.materi')}}">List Materi</a>
+                <a class="collapse-item {{request()->routeIs('admin.add.materi') ? 'active' : '' }}" href="{{route('admin.add.materi')}}">Tambah Materi</a>            
+              </div>
+            </div>
+          </li>
+
           <li class="nav-item {{request()->routeIs('admin.deltugasid') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route ('admin.deltugasid') }}">
               <!-- <i class="fas fa-fw fa-chart-area"></i> -->
@@ -120,6 +140,13 @@
           <div class="sidebar-heading">
             Tugas
           </div>
+
+          <li class="nav-item {{request()->routeIs('mhs.materi') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route ('mhs.materi') }}">
+              <i class="fab fa-fw fa-wpforms"></i>
+              <span>Materi</span>
+            </a>
+          </li>
           
           <li class="nav-item {{request()->routeIs('mhs.tugassaya') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route ('mhs.tugassaya') }}">

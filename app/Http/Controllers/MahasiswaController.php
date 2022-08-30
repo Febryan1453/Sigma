@@ -8,6 +8,7 @@ use App\Http\Requests\MyProfileMhsRequest;
 use App\Http\Requests\UpdateTugasRequest;
 use App\Models\HasilTugas;
 use App\Models\Mahasiswa;
+use App\Models\Materi;
 use App\Models\Tugas;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -213,6 +214,22 @@ class MahasiswaController extends Controller
         }
         else{
             return redirect()->back()->with('Failed','Password salah !');
+        }
+    }
+
+    public function materi()
+    {
+        $jurusan = Auth::user()->mahasiswa->jurusan;
+        $title = "List Materi";
+        if($jurusan == 'rpl'){
+            $materi = Materi::where('jurusan',$jurusan)->orderBy('created_at', 'DESC')->paginate(5);
+            return view('layouts.mhs.materi', compact('title','materi'));
+        }elseif($jurusan == 'tkj'){
+            $materi = Materi::where('jurusan',$jurusan)->orderBy('created_at', 'DESC')->paginate(5);
+            return view('layouts.mhs.materi', compact('title','materi'));
+        }else{
+            $materi = Materi::where('jurusan',$jurusan)->orderBy('created_at', 'DESC')->paginate(5);
+            return view('layouts.mhs.materi', compact('title','materi'));
         }
     }
 }
