@@ -193,11 +193,11 @@ class AdminController extends Controller
     {
         $title = "Tugas Mahasiswa";
         // $tugasMhsRpl = Tugas::where('jurusan','rpl')->get();
-        $tugasMhsRpl = Tugas::where('jurusan','rpl')->orderBy('tugas_ke', 'DESC')->paginate(5);
+        $tugasMhsRpl = Tugas::where('jurusan','rpl')->orderBy('created_at', 'DESC')->paginate(5);
         // $tugasMhsTkj = Tugas::where('jurusan','tkj')->get();
-        $tugasMhsTkj = Tugas::where('jurusan','tkj')->orderBy('tugas_ke', 'DESC')->paginate(5);
+        $tugasMhsTkj = Tugas::where('jurusan','tkj')->orderBy('created_at', 'DESC')->paginate(5);
         // $tugasMhsDmm = Tugas::where('jurusan','dmm')->get();
-        $tugasMhsDmm = Tugas::where('jurusan','dmm')->orderBy('tugas_ke', 'DESC')->paginate(5);
+        $tugasMhsDmm = Tugas::where('jurusan','dmm')->orderBy('created_at', 'DESC')->paginate(5);
         
         return view('layouts.admin.list-tugas-mhs',[
             'tugasMhsRpl'     => $tugasMhsRpl,
