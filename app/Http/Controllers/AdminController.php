@@ -22,16 +22,18 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $jam = date('H:i');
 
-        if ($jam > '05:30' && $jam < '10:00') {
-            $salam = 'Pagi';
-        } elseif ($jam >= '10:00' && $jam < '15:00') {
-            $salam = 'Siang';
-        } elseif ($jam < '18:00') {
-            $salam = 'Sore';
-        } else {
-            $salam = 'Malam';
+        $b = time();
+        $hour = date("G",$b);
+
+        if ($hour >= 5 && $hour <= 10){
+            $salam = "Pagi";
+        } elseif ($hour >= 11 && $hour <= 15){
+            $salam = "Siang";
+        }elseif ($hour >= 16 && $hour <= 18){
+            $salam = "Sore";
+        }elseif ($hour >= 19 && $hour <= 4){
+            $salam = "Malam";
         }
 
         $title = "Dashboard - Admin";
