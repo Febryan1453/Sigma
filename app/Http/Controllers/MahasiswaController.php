@@ -30,6 +30,8 @@ class MahasiswaController extends Controller
             $salam = "Sore";
         }elseif ($hour >= 19 && $hour <= 4){
             $salam = "Malam";
+        }else{
+            $salam = "Malam";
         }
 
         $mhs            = Auth::user()->name;
