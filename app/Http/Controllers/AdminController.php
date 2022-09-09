@@ -43,6 +43,12 @@ class AdminController extends Controller
         $countRpl = Tugas::where('jurusan','rpl')->count();
         $countTkj = Tugas::where('jurusan','tkj')->count();
         $countDmm = Tugas::where('jurusan','dmm')->count();
+        
+        $masuk    = HasilTugas::all()->count();
+        $diterima = HasilTugas::where('status','2')->count();
+        $ditolak  = HasilTugas::where('status','3')->count();
+        $periksa  = HasilTugas::where('status','1')->count();
+
         return view('layouts.admin.index',[
             'countMhs'      => $countMhs,
             'countRpl'      => $countRpl,
@@ -50,6 +56,10 @@ class AdminController extends Controller
             'countDmm'      => $countDmm,
             'title'         => $title,
             'salam'         => $salam,
+            'masuk'         => $masuk,
+            'diterima'      => $diterima,
+            'ditolak'       => $ditolak,
+            'periksa'       => $periksa,
         ]);
     }
 
