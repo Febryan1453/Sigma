@@ -76,7 +76,7 @@
                                 @endif
                               </td>
                               <td>
-                                @if($row->status == '2')
+                                @if($row->status == '2' || $row->status == '3')
                                 <button style="cursor:not-allowed;" disabled type="button" class="btn btn-sm btn-primary">
                                   <i class="fa-solid fa-pencil"></i>
                                 </button>
