@@ -158,7 +158,7 @@
           <li class="nav-item {{request()->routeIs('mhs.tugasselesai') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route ('mhs.tugasselesai') }}">
               <i class="fa-solid fa-check-to-slot"></i>
-              <span>Tugas Selesai</span>
+              <span>Tugas Terkirim</span>
             </a>
           </li>
 

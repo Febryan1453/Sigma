@@ -41,11 +41,22 @@ class MahasiswaController extends Controller
         $countTkj       = Tugas::where('jurusan','tkj')->count();
         $countDmm       = Tugas::where('jurusan','dmm')->count();
 
-        $tugasSelesai   = HasilTugas::where('mahasiswa_id',Auth::user()->mahasiswa->id)->count();
+        /* 
+            Status Tugas :
+            1 = Diperiksa
+            2 = Diterima
+            3 = Ditolak
+        */
+
+        $tugasSelesai   = HasilTugas::where('mahasiswa_id',Auth::user()->mahasiswa->id)->where('status','2')->count();
+        $tugasDitolak   = HasilTugas::where('mahasiswa_id',Auth::user()->mahasiswa->id)->where('status','3')->count();
+        $tugasPeriksa   = HasilTugas::where('mahasiswa_id',Auth::user()->mahasiswa->id)->where('status','1')->count();
 
         return view('layouts.mhs.index',[
             'countRpl'      => $countRpl,
             'tugasSelesai'  => $tugasSelesai,
+            'tugasDitolak'  => $tugasDitolak,
+            'tugasPeriksa'  => $tugasPeriksa,
             'countTkj'      => $countTkj,
             'countDmm'      => $countDmm,
             'title'         => $title,
