@@ -56,6 +56,7 @@
                               @endif
                             </td>
                             <td>
+                              @if(Auth::user()->email == 'febryan1453@gmail.com' || Auth::user()->email == 'idn@idn.id')
                                 <a href="{{ route('admin.detailmhs',$row->id) }}" class="btn btn-sm btn-primary">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
@@ -65,6 +66,17 @@
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusMhs{{$row->id}}" id="#myBtn">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
+                              @else
+                                <a href="{{ route('admin.detailmhs',$row->id) }}" class="btn btn-sm btn-primary">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <button disabled style="cursor:not-allowed;" type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#resetPwMhs{{$row->id}}" id="#myBtn">
+                                    <i class="fa-solid fa-key"></i>
+                                </button>
+                                <button disabled style="cursor:not-allowed;" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusMhs{{$row->id}}" id="#myBtn">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                              @endif
                             </td>
                             @include('layouts.modal.reset-pw-mhs')
                             @include('layouts.modal.hapus-akun-mhs')
