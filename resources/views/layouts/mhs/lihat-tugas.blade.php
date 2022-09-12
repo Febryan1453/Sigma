@@ -73,7 +73,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td class="text-center" colspan="6">Belum ada tugas untuk {{ Auth::user()->mahasiswa->name }} !</td>
+                            <td class="text-center" colspan="7">Belum ada tugas untuk {{ Auth::user()->mahasiswa->name }} !</td>
                         </tr>
                         @endforelse
                     </tbody>

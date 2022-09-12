@@ -75,6 +75,39 @@
                           <td width="auto" class="text-justify">{!! $tugas->petunjuk !!}</td>
                         </tr>
                         <tr>
+                          <td class="text-right" width="20%">Informasi Detail</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-justify">
+
+                            <strong>Ditugaskan Kpd :</strong> <br>
+                            <?php $i = 1; ?>
+                            @foreach($mhs as $row)
+                             {{  $i++ }}. {{ $row->name }} <br>
+                            @endforeach
+                            
+                            <br>
+
+                            <strong>Diterima :</strong> <br>
+                            <?php $i = 1; ?>
+                            @forelse($mhsTerima as $row)
+                             {{  $i++ }}. {{ $row->mhs->name }} <br>
+                            @empty
+                            Periksa tugas dulu
+                            @endforelse
+
+                            <br>
+
+                            <strong>Ditolak :</strong> <br>
+                            <?php $i = 1; ?>
+                            @forelse($mhsTolak as $row)
+                             {{  $i++ }}. {{ $row->mhs->name }} <br>
+                            @empty
+                            Periksa tugas dulu
+                            @endforelse
+
+                          </td>
+                        </tr>
+                        <tr>
                           <td></td>
                           <td></td>
                           <td></td>

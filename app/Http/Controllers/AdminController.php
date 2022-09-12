@@ -272,15 +272,21 @@ class AdminController extends Controller
 
     }
     
-    public function lihatTugasMahasiswa($id)
+    public function lihatTugasMahasiswa($jurusan, $id)
     {
         $hasilTugas = HasilTugas::where('tugas_id',$id)->get();
+        $mhsTerima  = HasilTugas::where('tugas_id',$id)->where('status', '2')->get();
+        $mhsTolak   = HasilTugas::where('tugas_id',$id)->where('status', '3')->get();
         $tugas      = Tugas::findOrFail($id);
+        $mhs        = Mahasiswa::where('jurusan', $jurusan)->get();
         $title = "Tugas $tugas->tugas_ke";
         return view('layouts.admin.list-tugaske-mhs',[
             'hasilTugas'     => $hasilTugas,
             'tugas'          => $tugas,
             'title'          => $title,
+            'mhs'            => $mhs,
+            'mhsTerima'      => $mhsTerima,
+            'mhsTolak'       => $mhsTolak,
         ]);
     }
     

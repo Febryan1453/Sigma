@@ -45,7 +45,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::put('/save-edit-tugas-mahasiswa', [AdminController::class, 'saveEditTugasMahasiswa'])->name('admin.saveedittugasmhs');
     Route::put('/save-sts-edit-tugas-mahasiswa', [AdminController::class, 'saveStsEditTugasMahasiswa'])->name('admin.savestsedittugasmhs');
     
-    Route::get('/lihat-tugas-mahasiswa/{id}', [AdminController::class, 'lihatTugasMahasiswa'])->name('admin.lihattugasmhs');
+    Route::get('/lihat-tugas-mahasiswa/{jurusan}/{id}', [AdminController::class, 'lihatTugasMahasiswa'])->name('admin.lihattugasmhs');
     Route::put('/periksa-tugas-mahasiswa', [AdminController::class, 'periksaTugasMahasiswa'])->name('admin.periksatugasmhs');
     Route::delete('/del-tugas-selesai', [AdminController::class, 'delTugasSelesai'])->name('admin.deltugasselesai');
     Route::put('/reset-pw-user', [AdminController::class, 'resetPass'])->name('admin.resetpass');
