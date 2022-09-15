@@ -277,14 +277,16 @@ class AdminController extends Controller
         $hasilTugas = HasilTugas::where('tugas_id',$id)->get();
         $mhsTerima  = HasilTugas::where('tugas_id',$id)->where('status', '2')->get();
         $mhsTolak   = HasilTugas::where('tugas_id',$id)->where('status', '3')->get();
+        $mhsPeriksa = HasilTugas::where('tugas_id',$id)->where('status', '1')->get();
         $tugas      = Tugas::findOrFail($id);
-        $mhs        = Mahasiswa::where('jurusan', $jurusan)->get();
+        // $mhs        = Mahasiswa::where('jurusan', $jurusan)->get();
         $title = "Tugas $tugas->tugas_ke";
         return view('layouts.admin.list-tugaske-mhs',[
             'hasilTugas'     => $hasilTugas,
             'tugas'          => $tugas,
             'title'          => $title,
-            'mhs'            => $mhs,
+            // 'mhs'            => $mhs,
+            'mhsPeriksa'     => $mhsPeriksa,
             'mhsTerima'      => $mhsTerima,
             'mhsTolak'       => $mhsTolak,
         ]);

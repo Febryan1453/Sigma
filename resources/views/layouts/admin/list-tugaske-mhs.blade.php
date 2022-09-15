@@ -79,11 +79,13 @@
                           <td width="1%">:</td> 
                           <td width="auto" class="text-justify">
 
-                            <strong>Ditugaskan Kpd :</strong> <br>
+                            <strong>Periksa :</strong> <br>
                             <?php $i = 1; ?>
-                            @foreach($mhs as $row)
-                             {{  $i++ }}. {{ $row->name }} <br>
-                            @endforeach
+                            @forelse($mhsPeriksa as $row)
+                             {{  $i++ }}. {{ $row->mhs->name }} <br>
+                            @empty
+                            Belum ada yang mengirim tugas atau semua telah diperiksa <br>
+                            @endforelse
                             
                             <br>
 
@@ -92,7 +94,7 @@
                             @forelse($mhsTerima as $row)
                              {{  $i++ }}. {{ $row->mhs->name }} <br>
                             @empty
-                            Periksa tugas dulu
+                            Periksa tugas dulu <br>
                             @endforelse
 
                             <br>
