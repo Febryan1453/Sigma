@@ -42,7 +42,7 @@
                         <td width="1%">:</td> 
                         <td width="auto" class="text-justify">
                         @if($materi->jurusan == 'rpl')
-                        Rekayasa Perangkat lunak
+                        Rekayasa Perangkat Lunak
                         @elseif($materi->jurusan == 'tkj')
                         Teknik Komputer & Jaringan
                         @else
