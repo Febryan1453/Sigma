@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class NeedsController extends Controller
 {
-    public function detailMateri($id)
+    public function detailMateri($tgl_materi, $id)
     {
         $materi = Materi::findOrFail($id);
 

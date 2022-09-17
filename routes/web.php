@@ -98,7 +98,7 @@ Route::prefix('mahasiswa')->middleware(['auth','isMhs'])->group(function(){
 });
 
 
-Route::get('/materi/{id}', [NeedsController::class, 'detailMateri'])->name('materi.detail');
+Route::get('/materi/{tgl_materi}/{id}', [NeedsController::class, 'detailMateri'])->name('materi.detail');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test', function () {

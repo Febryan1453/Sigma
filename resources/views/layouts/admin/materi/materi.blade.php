@@ -43,8 +43,8 @@
                             <td style="text-align: left;">{!! $row->rincian_materi !!}</td>
                             <!-- <td>{{ $row->link_materi }}</td> -->
                             <td>
-                              <input type="hidden" value="{{ route('materi.detail',$row->id) }}" id="linkMateri">
-                                <a target="_blank" href="{{ route('materi.detail',$row->id) }}" class="btn btn-sm btn-success">
+                              <input type="hidden" value="{{ route('materi.detail',[$row->tgl_materi, $row->id]) }}" id="linkMateri">
+                                <a target="_blank" href="{{ route('materi.detail',[$row->tgl_materi, $row->id]) }}" class="btn btn-sm btn-success">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a href="{{ route('admin.edit.materi',$row->id) }}" class="btn btn-sm btn-primary">
