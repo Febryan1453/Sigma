@@ -14,7 +14,7 @@
                         @method('DELETE')
                         <input value="{{ $row->id }}" name="id" type="hidden"/>     
                         <div class="text-center">
-                          Hapus Materi <span style="color: red;">{{ $row->nama_materi}}</span> pada tanggal <span style="color: red;">{{ \Carbon\Carbon::parse($row->tgl_materi)->translatedFormat('l, d F Y')}}</span> ?
+                          Hapus Materi <strong><span style="color: red;">{{ $row->nama_materi}}</span></strong> pada tanggal <strong><span style="color: red;">{{ \Carbon\Carbon::parse($row->tgl_materi)->translatedFormat('l, d F Y')}}</span></strong> ?
                         </div>
                 </div>
                 <div class="modal-footer">

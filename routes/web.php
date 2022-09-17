@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\NeedsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Embed\Embed;
@@ -94,8 +95,10 @@ Route::prefix('mahasiswa')->middleware(['auth','isMhs'])->group(function(){
     
     Route::get('/materi', [MahasiswaController::class, 'materi'])->name('mhs.materi');
 
-
 });
+
+
+Route::get('/materi/{id}', [NeedsController::class, 'detailMateri'])->name('materi.detail');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test', function () {
