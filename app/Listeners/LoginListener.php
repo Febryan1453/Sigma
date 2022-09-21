@@ -34,7 +34,7 @@ class LoginListener
         $name    = $event->name;
         $email   = $event->email;
         $role    = $event->role;
-        // $ip      = \request()->ip();
+        $ip      = \request()->ip();
 
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $id = substr(str_shuffle($permitted_chars), 0, 12);
@@ -45,7 +45,7 @@ class LoginListener
             'name'          => $name,
             'email'         => $email,
             'role'          => $role,
-            // 'ip'            => $ip,
+            'ip'            => $ip,
             'waktu_login'   => $time,
         ]);
     }
