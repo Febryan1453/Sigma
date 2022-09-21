@@ -106,6 +106,15 @@
             </div>
           </li>
 
+          @if(Auth::user()->email == 'febryan1453@gmail.com')
+          <li class="nav-item {{request()->routeIs('history.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route ('history.index') }}">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>History Login User</span>
+            </a>
+          </li>
+          @endif
+
           <li class="nav-item {{request()->routeIs('admin.deltugasid') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route ('admin.deltugasid') }}">
               <!-- <i class="fas fa-fw fa-chart-area"></i> -->

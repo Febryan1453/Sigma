@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HistoryLoginController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\NeedsController;
@@ -70,6 +71,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::put('/materi/edit/save', [MateriController::class, 'saveMateri'])->name('admin.save.materi');
     
     Route::delete('/materi/delete', [MateriController::class, 'delMateri'])->name('admin.del.materi');
+    
+    // History Login User
+    Route::get('/history_login', [HistoryLoginController::class, 'index'])->name('history.index');
+    Route::delete('/history_login/delete', [HistoryLoginController::class, 'destroy'])->name('history.destroy');
 
 });
 
