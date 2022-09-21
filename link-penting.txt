@@ -37,3 +37,6 @@ https://www.carawebs.info/2012/12/cara-membuat-tulisan-berkedip.html
 
 CKEditor untuk textarea :
 https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/quick-start.html
+
+Cara Get Log History Login User :
+https://www.youtube.com/watch?v=iMQJGAdAqkc
