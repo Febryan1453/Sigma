@@ -9,9 +9,11 @@ class HistoryLoginController extends Controller
 {
     public function index()
     {
+        $title = "History Login User";
         $history = HistoryLogin::orderBy('waktu_login', 'DESC')->get();
         return view('layouts.admin.history.index',[
-            'history' => $history,
+            'history'   => $history,
+            'title'     => $title,
         ]);
     }
 
