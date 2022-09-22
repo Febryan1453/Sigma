@@ -75,6 +75,11 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     // History Login User
     Route::get('/history_login', [HistoryLoginController::class, 'index'])->name('history.index');
     Route::delete('/history_login/delete', [HistoryLoginController::class, 'destroy'])->name('history.destroy');
+    
+    // History Login User Dengan Yajra DataTables
+    Route::get('history', [HistoryLoginController::class, 'index_yajra'])->name('history.yajra');
+    Route::get('history/destroy/{id}/', [HistoryLoginController::class, 'destroy_yajra']);
+    Route::get('history/removeall', [HistoryLoginController::class, 'removeall'])->name('history.removeall');
 
 });
 

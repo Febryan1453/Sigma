@@ -107,11 +107,31 @@
           </li>
 
           @if(Auth::user()->email == 'febryan1453@gmail.com')
-          <li class="nav-item {{request()->routeIs('history.index') ? 'active' : '' }}">
+          <!-- <li class="nav-item {{request()->routeIs('history.index') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route ('history.index') }}">
               <i class="fa-solid fa-clock-rotate-left"></i>
               <span>History Login User</span>
             </a>
+          </li> -->
+
+          <li class="nav-item
+            @if(request()->routeIs('history.index'))
+              active
+            @elseif(request()->routeIs('history.yajra'))
+              active
+            @endif
+          ">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#historyLogin" aria-expanded="false" aria-controls="historyLogin">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>History</span>
+            </a>
+            <div id="historyLogin" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">History Login</h6>
+                <a class="collapse-item {{request()->routeIs('history.index') ? 'active' : '' }}" href="{{route('history.index')}}">Semua User v1</a>
+                <a class="collapse-item {{request()->routeIs('history.yajra') ? 'active' : '' }}" href="{{route('history.yajra')}}">Semua User v2</a>            
+              </div>
+            </div>
           </li>
           @endif
 

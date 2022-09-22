@@ -5,10 +5,98 @@
   <script src="{{ asset ('RuangGuru/vendor/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset ('RuangGuru/js/demo/chart-area-demo.js') }}"></script>  
 
-  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-
   <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  <!-- <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> -->
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('history.yajra') }}",
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'name', name: 'name'},
+                {data: 'waktu_login', name: 'waktu_login'},
+                {data: 'ip', name: 'ip'},
+                {data: 'os', name: 'os'},
+                {data: 'browser', name: 'browser'},
+                {data: 'device', name: 'device'},
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+                {data: 'checkbox', name: 'checkbox', orderable:false, searchable:false},
+            ]
+        });
+
+        var user_id;  
+
+        $(document).on('click', '.delete', function(){
+            user_id = $(this).attr('id');
+            $('#deleteHistory').modal('show');
+        });
+    
+        $('#hapus').click(function(){
+            $.ajax({
+                url:"history/destroy/"+user_id,
+                beforeSend:function(){
+                    $('#hapus').text('Deleting...');
+                },
+                success:function(data)
+                {
+                    setTimeout(function(){
+                    $('#deleteHistory').modal('hide');
+                    $('#hapus').text('Hapus');
+                    $('.yajra-datatable').DataTable().ajax.reload();
+                    // alert('Data Deleted');
+                    }, 1000);
+                }
+            })
+        });
+
+        $(document).on('click', '#bulk_delete', function(){
+            var id = [];
+            if(confirm("Are you sure you want to Delete this data?"))
+            {
+                $('.users_checkbox:checked').each(function(){
+                    id.push($(this).val());
+                });
+                if(id.length > 0)
+                {
+                    $.ajax({
+                        url:"{{ route('history.removeall')}}",
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        method:"get",
+                        data:{id:id},
+                        success:function(data)
+                        {
+                            console.log(data);
+                            alert(data);
+                            // window.location.assign("history"); 
+                            $('.yajra-datatable').DataTable().ajax.reload();
+                            
+                        },
+                        error: function(data) {
+                            var errors = data.responseJSON;
+                            console.log(errors);
+                        }
+                    });
+                }
+                else
+                {
+                    alert("Please select atleast one checkbox");
+                }
+            }
+        });
+
+    });
+  </script>
   
   <script>
     setInterval(function(){
