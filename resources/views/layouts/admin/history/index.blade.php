@@ -34,7 +34,6 @@
                             <td>{{ \Carbon\Carbon::parse($row->waktu_login)->translatedFormat('l, d F Y, H:i:s')}}</td>
                             <td>
                               IP : <strong>{{ $row->ip }}</strong> <br>
-                              MAC : <strong>{{ $row->mac_address }}</strong> <br>
                               OS : <strong>{{ $row->os }}</strong> <br>
                               Browser : <strong>{{ $row->browser }}</strong> <br>
                               Device : <strong>{{ $row->device }}</strong>
