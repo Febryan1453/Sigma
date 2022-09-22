@@ -10,7 +10,7 @@ class HistoryLoginController extends Controller
 {
     public function index()
     {
-        $title = "History Login User";
+        $title = "History Login User v1";
         $history = HistoryLogin::orderBy('waktu_login', 'DESC')->get();
         // $history = HistoryLogin::orderBy('index', 'DESC')->get();
         return view('layouts.admin.history.index',[
@@ -29,6 +29,7 @@ class HistoryLoginController extends Controller
 
     public function index_yajra(Request $request)
     {
+        $title = "History Login User v2";
         if ($request->ajax()) {
             // $data = HistoryLogin::select('id','name','waktu_login','ip','os','name')->get();
             $data = HistoryLogin::all();
@@ -44,7 +45,9 @@ class HistoryLoginController extends Controller
                 ->rawColumns(['checkbox','action'])
                 ->make(true);
         }
-        return view('layouts.admin.history.history-yajra');
+        return view('layouts.admin.history.history-yajra',[
+            'title'     => $title,
+        ]);
     }
 
     public function destroy_yajra($id)
