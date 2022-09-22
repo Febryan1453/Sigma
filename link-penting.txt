@@ -40,3 +40,11 @@ https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/quick-st
 
 Cara Get Log History Login User :
 https://www.youtube.com/watch?v=iMQJGAdAqkc
+
+Yajra DataTables :
+https://www.youtube.com/watch?v=DpMzg4g-d3Y
+https://tutorial101.blogspot.com/2022/07/laravel-9-delete-multiple-data-using.html
+https://codelapan.com/post/yajra-datatables-server-side-laravel-8
+
+Cara Menampilkan User yang Online di Laravel
+https://www.sahretech.com/2021/12/cara-menampilkan-user-yang-online-di.html
