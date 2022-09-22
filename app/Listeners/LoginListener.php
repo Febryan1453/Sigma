@@ -42,6 +42,7 @@ class LoginListener
         $browser    = UserSystemInfoHelper::get_browsers();
         $device     = UserSystemInfoHelper::get_device();
         $os         = UserSystemInfoHelper::get_os();
+        $mac         = UserSystemInfoHelper::mac_addres();
 
         $sum        = HistoryLogin::count();
         $index      = $sum + 1;
@@ -61,6 +62,7 @@ class LoginListener
             'browser'       => $browser,
             'os'            => $os,
             'index'         => $index,
+            'mac_address'   => $mac,
         ]);
     }
 }

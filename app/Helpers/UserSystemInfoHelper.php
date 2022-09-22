@@ -162,4 +162,14 @@ class UserSystemInfoHelper
   				}
 
   	}
+
+	public static function mac_addres()
+	{
+		// PHP code to get the MAC address of Server
+		$MAC = exec('getmac');
+		// Storing 'getmac' value in $MAC
+		$MAC = strtok($MAC, ' ');
+
+		return $MAC;
+	}
 }
