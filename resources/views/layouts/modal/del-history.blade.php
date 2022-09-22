@@ -14,7 +14,7 @@
                         @method('DELETE')
                         <input value="{{ $row->id }}" name="id" type="hidden"/>     
                         <div class="text-center">
-                          Hapus uhistory user {{ $row->name}}  dengan ID {{ $row->id }}?
+                          Hapus history user <strong style="color: red;">{{ $row->name}}</strong>  dengan ID <strong style="color: red;">{{ $row->id }}</strong> ?
                         </div>
                 </div>
                 <div class="modal-footer">
