@@ -22,9 +22,8 @@
                     <thead class="thead-light">
                       <tr>
                         <th>Nama</th>
-                        <th>Email</th>
-                        <th>Alamat IP</th>
                         <th>Waktu Login</th>
+                        <th>Informasi</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -32,9 +31,13 @@
                         @forelse($history as $row)
                         <tr>
                             <td>{{ $row->name }}</td>
-                            <td><a href="#">{{ $row->email }}</a></td>
-                            <td>{{ $row->ip }}</td>
                             <td>{{ \Carbon\Carbon::parse($row->waktu_login)->translatedFormat('l, d F Y, H:i:s')}}</td>
+                            <td>
+                              IP : <strong>{{ $row->ip }}</strong> <br>
+                              OS : <strong>{{ $row->os }}</strong> <br>
+                              Browser : <strong>{{ $row->browser }}</strong> <br>
+                              Device : <strong>{{ $row->device }}</strong>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteHistory{{$row->id}}" id="#myBtn">
                                   <i class="fas fa-trash"></i>

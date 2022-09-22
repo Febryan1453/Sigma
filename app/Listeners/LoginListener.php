@@ -3,6 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\LoginEvent;
+use App\Helpers\UserSystemInfoHelper;
+use App\Models\HistoryLogin;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,12 +31,20 @@ class LoginListener
      */
     public function handle(LoginEvent $event)
     {
+
+
         $time = Carbon::now()->toDateTimeString();
-        $user_id = $event->user_id;
-        $name    = $event->name;
-        $email   = $event->email;
-        $role    = $event->role;
-        $ip      = \request()->getClientIp();
+        $user_id    = $event->user_id;
+        $name       = $event->name;
+        $email      = $event->email;
+        $role       = $event->role;
+        $ip         = UserSystemInfoHelper::get_ip();
+        $browser    = UserSystemInfoHelper::get_browsers();
+        $device     = UserSystemInfoHelper::get_device();
+        $os         = UserSystemInfoHelper::get_os();
+
+        $sum        = HistoryLogin::count();
+        $index      = $sum + 1;
 
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $id = substr(str_shuffle($permitted_chars), 0, 12);
@@ -47,6 +57,10 @@ class LoginListener
             'role'          => $role,
             'ip'            => $ip,
             'waktu_login'   => $time,
+            'device'        => $device,
+            'browser'       => $browser,
+            'os'            => $os,
+            'index'         => $index,
         ]);
     }
 }
