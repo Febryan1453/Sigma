@@ -47,7 +47,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td class="text-center" colspan="5">User admin belum ada !</td>
+                            <td class="text-center" colspan="5">Belum ada user yang login</td>
                         </tr>
                         @endforelse
                     </tbody>
