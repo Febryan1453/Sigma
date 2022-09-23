@@ -21,7 +21,7 @@
                   <table class="table align-items-center table-flush text-center">
                     <thead class="thead-light">
                       <tr>
-                        <th>ID</th>                        
+                        <th>Umur</th>                        
                         <th>Nama</th>                        
                         <th>Nilai</th>                        
                       </tr>
@@ -29,7 +29,20 @@
                     <tbody>
                         @foreach($mhs as $row)
                         <tr>
-                            <td>{{ $row->id }}</td>
+                            <td>
+                                <?php
+                                $tglLahir = new DateTime($row->tgl_lahir);
+                                $toDay = new DateTime('today');
+                                $yy = $toDay->diff($tglLahir)->y;
+                                $mm = $toDay->diff($tglLahir)->m;
+                                $dd = $toDay->diff($tglLahir)->d;
+                                ?>
+                                @if (empty($row->tgl_lahir)) 
+                                    - 
+                                @else 
+                                    {{ $yy }} Tahun {{ $mm }} Bulan {{ $dd }} Hari
+                                @endif
+                            </td>
                             <td>{{ $row->name }}</td>
                             <td>
                                 <a href="{{ route('nilai.detail',$row->id) }}">Lihat Nilai Mahasiswa</a>
