@@ -13,7 +13,7 @@
                         @csrf
                         @method('PUT')
                         <input value="{{ $row->id }}" name="id" type="hidden"/>
-
+                        
                         <div class="form-group">
                             <label for="soal">Saran Untuk Mahasiswa</label>
                             <textarea class="form-control" name="komentar" id="soal" rows="3">{{ $row->komentar }}</textarea>
@@ -31,7 +31,27 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>       
+                        </div>  
+                        
+                        <div class="form-group">
+                            <label for="nilai">Nilai</label>
+                            <select name="nilai" class="form-control @error('nilai') is-invalid @enderror" id="nilai">
+                                <option value="">Beri Nilai</option>
+                                <option value="60">60</option>
+                                <option value="65">65</option>
+                                <option value="70">70</option>
+                                <option value="75">75</option>
+                                <option value="80">80</option>
+                                <option value="85">85</option>
+                                <option value="90">90</option>
+                                <option value="95">95</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+
+                        <input value="{{ $row->mhs->id }}" name="mahasiswa_id" type="hidden"/>
+                        <input value="{{ $row->tugas->id }}" name="tugas_id" type="hidden"/>
+                        <input value="{{ $row->mhs->jurusan }}" name="jurusan" type="hidden"/>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>

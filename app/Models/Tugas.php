@@ -39,4 +39,9 @@ class Tugas extends Model
     {
         return $this->hasMany(HasilTugas::class, 'id', 'tugas_id');
     }
+
+    public function nilaiMahasiswa()
+    {
+        return $this->hasMany(NilaiMahasiswa::class, 'id', 'tugas_id');
+    }
 }

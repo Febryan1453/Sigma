@@ -43,4 +43,9 @@ class HasilTugas extends Model
     {
         return $this->belongsTo(Tugas::class, 'tugas_id', 'id');
     }
+
+    public function nilaiMahasiswa()
+    {
+        return $this->hasMany(NilaiMahasiswa::class, 'id', 'hasil_tugas_id');
+    }
 }

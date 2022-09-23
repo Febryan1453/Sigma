@@ -9,6 +9,7 @@ use App\Http\Requests\EditTugasMhsRequest;
 use App\Http\Requests\MyProfileMhsAdminRequest;
 use App\Models\HasilTugas;
 use App\Models\Mahasiswa;
+use App\Models\NilaiMahasiswa;
 use App\Models\Tugas;
 use App\Models\User;
 use DateTime;
@@ -295,11 +296,32 @@ class AdminController extends Controller
     public function periksaTugasMahasiswa(Request $request)
     {
         
-        $addTugasMhs                = HasilTugas::findOrFail($request->id);
-        $addTugasMhs->status        = $request->status;
-        $addTugasMhs->komentar      = $request->komentar;
-        $addTugasMhs->update();
+        if($request->status == 2){
+            $addTugasMhs                = HasilTugas::findOrFail($request->id);
+            $addTugasMhs->status        = $request->status;
+            $addTugasMhs->komentar      = $request->komentar;
+            $addTugasMhs->update();
 
+            $addNilai                   = new NilaiMahasiswa();
+            $addNilai->hasil_tugas_id   = $request->id;
+            $addNilai->tugas_id         = $request->tugas_id;
+            $addNilai->mahasiswa_id     = $request->mahasiswa_id;
+            $addNilai->nilai            = $request->nilai;
+            $addNilai->jurusan          = $request->jurusan;
+            $addNilai->save();
+        }elseif($request->status == 3){
+            $addTugasMhs                = HasilTugas::findOrFail($request->id);
+            $addTugasMhs->status        = $request->status;
+            $addTugasMhs->komentar      = $request->komentar;
+            $addTugasMhs->update();
+        }else{
+            $addTugasMhs                = HasilTugas::findOrFail($request->id);
+            $addTugasMhs->status        = $request->status;
+            $addTugasMhs->komentar      = $request->komentar;
+            $addTugasMhs->update();
+        }
+
+        
         return redirect()->back()->with('Ok', "Berhasil memeriksa tugas !");
 
     }

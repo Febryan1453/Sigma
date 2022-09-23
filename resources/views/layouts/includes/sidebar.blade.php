@@ -86,6 +86,13 @@
             </a>
           </li>
 
+          <li class="nav-item {{request()->routeIs('nilai.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route ('nilai.index') }}">
+              <i class="fa-solid fa-list-ol"></i>
+              <span>Nilai Mahasiswa</span>
+            </a>
+          </li>
+
           <li class="nav-item
             @if(request()->routeIs('admin.add.materi'))
               active

@@ -5,6 +5,7 @@ use App\Http\Controllers\HistoryLoginController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\NeedsController;
+use App\Http\Controllers\NilaiMahasiswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Embed\Embed;
@@ -80,6 +81,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('history', [HistoryLoginController::class, 'index_yajra'])->name('history.yajra');
     Route::get('history/destroy/{id}/', [HistoryLoginController::class, 'destroy_yajra']);
     Route::get('history/removeall', [HistoryLoginController::class, 'removeall'])->name('history.removeall');
+    
+    //Nilai Mahasiswa
+    Route::get('nilai_mhs', [NilaiMahasiswa::class, 'index'])->name('nilai.index');
+    Route::get('nilai_mhs/rincian/{mahasiswa_id}', [NilaiMahasiswa::class, 'detail_nilai'])->name('nilai.detail');
 
 });
 

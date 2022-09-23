@@ -4,25 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
-class Mahasiswa extends Model
+class NilaiMahasiswa extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'name',
-        'gender',
-        'nim',
+        'hasil_tugas_id',
+        'tugas_id',
+        'mahasiswa_id',
+        'nilai',
+        'grade',
         'jurusan',
-        'tempat_lahir',
-        'tgl_lahir',
-        'telp',
-        'alasan',
-        'isready',
     ];
-
+    
     public $incrementing = false;
     protected $keyType = 'string';
     
@@ -37,14 +32,22 @@ class Mahasiswa extends Model
             }
         });
     }
-    
-    public function hasilTugasMhs()
+
+    public function hasilTugas()
     {
-        return $this->hasMany(HasilTugas::class, 'id', 'mahasiswa_id');
+        return $this->belongsTo(HasilTugas::class, 'hasil_tugas_id', 'id');
+    }
+
+    public function mhs()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id', 'id');
+    }
+
+    public function tugas()
+    {
+        return $this->belongsTo(Tugas::class, 'tugas_id', 'id');
     }
     
-    public function nilaiMhs()
-    {
-        return $this->hasMany(NilaiMahasiswa::class, 'id', 'mahasiswa_id');
-    }
+
+
 }
