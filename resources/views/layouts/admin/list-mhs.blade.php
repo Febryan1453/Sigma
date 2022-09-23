@@ -44,7 +44,7 @@
                             <td style="text-transform: uppercase;">{{ $row->mahasiswa->jurusan }}</td>
                             <td>
                               <?php
-                                $jumlahTugas = App\Models\HasilTugas::where('mahasiswa_id', $row->mahasiswa->id)->count();
+                                $jumlahTugas = App\Models\HasilTugas::where('mahasiswa_id', $row->mahasiswa->id)->where('status','2')->count();
                               ?>
                               {{ $jumlahTugas }}
                             </td>

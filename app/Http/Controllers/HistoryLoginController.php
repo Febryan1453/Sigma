@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HistoryLogin;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -32,7 +33,7 @@ class HistoryLoginController extends Controller
         $title = "History Login User v2";
         if ($request->ajax()) {
             // $data = HistoryLogin::select('id','name','waktu_login','ip','os','name')->get();
-            $data = HistoryLogin::all();
+            $data = HistoryLogin::orderBy('waktu_login', 'DESC')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
@@ -40,6 +41,13 @@ class HistoryLoginController extends Controller
                     // $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
                     $button = '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>';
                     return $button;
+                })
+                // ->editColumn('waktu_login', function ($data){
+                //     return date('d/m/y H:i', strtotime($data->waktu_login) );
+                // })
+                ->editColumn('waktu_login', function($data){ 
+                    $formatedDate = Carbon::parse($data->waktu_login)->translatedFormat('d F Y, h:i'); 
+                    return $formatedDate; 
                 })
                 ->addColumn('checkbox', '<input type="checkbox" name="users_checkbox[]" class="users_checkbox" value="{{$id}}" />')
                 ->rawColumns(['checkbox','action'])

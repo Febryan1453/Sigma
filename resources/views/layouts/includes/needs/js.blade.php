@@ -37,9 +37,27 @@
 
         var user_id;  
 
+        // $(document).on('click', '.delete', function(){
+        //     user_id = $(this).attr('id');
+        //     $('#deleteHistory').modal('show');
+        // });
+
         $(document).on('click', '.delete', function(){
             user_id = $(this).attr('id');
-            $('#deleteHistory').modal('show');
+            if(confirm("Are you sure you want to Delete this data?")){
+                $.ajax({
+                    url:"history/destroy/"+user_id,
+                    // beforeSend:function(){
+                    //     $('#hapus').text('Deleting...');
+                    // },
+                    success:function(data)
+                    {
+                        setTimeout(function(){
+                        $('.yajra-datatable').DataTable().ajax.reload();
+                        }, 1000);
+                    }
+                })
+            }
         });
     
         $('#hapus').click(function(){
