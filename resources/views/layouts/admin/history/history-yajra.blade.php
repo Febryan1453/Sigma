@@ -20,7 +20,7 @@
                     <table class="table table-striped table-bordered yajra-datatable"> 
                           <thead>
                               <tr>
-                                  <th>ID</th>
+                                  <!-- <th>ID</th> -->
                                   <th>Nama</th>
                                   <th>Waktu Login</th>
                                   <th>Ip</th>

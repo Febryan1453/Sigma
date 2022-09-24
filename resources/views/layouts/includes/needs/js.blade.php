@@ -24,7 +24,7 @@
             serverSide: true,
             ajax: "{{ route('history.yajra') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                // {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'waktu_login', name: 'waktu_login'},
                 {data: 'ip', name: 'ip'},
