@@ -88,6 +88,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::post('nilai_mhs/simpan', [NilaiMahasiswa::class, 'simpan_nilai'])->name('nilai.simpan');
     Route::delete('nilai_mhs/delete', [NilaiMahasiswa::class, 'delete_nilai'])->name('nilai.delete'); 
 
+    Route::get('nilai_mhs/tugas', [NilaiMahasiswa::class, 'per_tugas'])->name('nilai.tugas');
+    Route::get('nilai_mhs/tugas/{id}', [NilaiMahasiswa::class, 'detail_tugas'])->name('nilai.rincian');
+    Route::put('nilai_mhs/edit_nilai', [NilaiMahasiswa::class, 'edit_nilai'])->name('nilai.edit');
+
 });
 
 

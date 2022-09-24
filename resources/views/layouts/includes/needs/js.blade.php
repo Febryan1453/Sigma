@@ -4,6 +4,7 @@
   <script src="{{ asset ('RuangGuru/js/ruang-admin.min.js') }}"></script>
   <script src="{{ asset ('RuangGuru/vendor/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset ('RuangGuru/js/demo/chart-area-demo.js') }}"></script>  
+  <script src="{{ asset ('FebryanJs/nilai.js') }}"></script>  
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
@@ -111,6 +112,18 @@
                     alert("Please select atleast one checkbox");
                 }
             }
+        });
+
+         $('.table-nilai').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('nilai.tugas') }}",
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'tugas_ke', name: 'tugas_ke'},
+                {data: 'deadline', name: 'deadline'},
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+            ]
         });
 
     });

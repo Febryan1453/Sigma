@@ -86,11 +86,24 @@
             </a>
           </li>
 
-          <li class="nav-item {{request()->routeIs('nilai.index') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route ('nilai.index') }}">
+          <li class="nav-item
+            @if(request()->routeIs('nilai.index'))
+              active
+            @elseif(request()->routeIs('nilai.tugas'))
+              active
+            @endif
+          ">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
               <i class="fa-solid fa-list-ol"></i>
               <span>Nilai Mahasiswa</span>
             </a>
+            <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Nilai</h6>
+                <a class="collapse-item {{request()->routeIs('nilai.index') ? 'active' : '' }}" href="{{route('nilai.index')}}">Per Mahasiswa</a>
+                <a class="collapse-item {{request()->routeIs('nilai.tugas') ? 'active' : '' }}" href="{{route('nilai.tugas')}}">Per Tugas</a>            
+              </div>
+            </div>
           </li>
 
           <li class="nav-item

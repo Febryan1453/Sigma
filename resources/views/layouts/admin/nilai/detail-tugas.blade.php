@@ -4,12 +4,12 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
-          Nilai {{ $mhs->name }}         
+          Nilai Tugas {{ $tugas->tugas_ke }}         
         </h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Nilai Mahasiswa</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Nilai {{ $mhs->name }}  </li>
+            <li class="breadcrumb-item active" aria-current="page">Nilai Tugas {{ $tugas->tugas_ke }}  </li>
         </ol>
     </div>
 
@@ -22,39 +22,35 @@
                     <table class="table align-items-center table-flush text-center">
                       
                         <tr>
-                          <td class="text-right" width="20%">Nim</td> 
+                          <td class="text-right" width="20%">Tugas Ke</td> 
                           <td width="1%">:</td> 
-                          <td width="auto" class="text-left" style="font-weight: bold;">{{ $mhs->nim }} </td>
+                          <td width="auto" class="text-left" style="font-weight: bold;">{{ $tugas->tugas_ke }} </td>
                         </tr>
                         <tr>
-                          <td class="text-right" width="20%">Nama Mahasiswa</td> 
-                          <td width="1%">:</td> 
-                          <td width="auto" class="text-left" style="font-weight: bold;">{{ $mhs->name }} </td>
-                        </tr>
-                        <tr>
-                          <td class="text-right" width="20%">Tanggal Lahir</td> 
+                          <td class="text-right" width="20%">Deadline Tugas</td> 
                           <td width="1%">:</td> 
                           <td width="auto" class="text-left" style="font-weight: bold;">
-                            @if (empty($mhs->tgl_lahir)) 
-                            - 
-                            @else 
-                            {{ \Carbon\Carbon::parse($mhs->tgl_lahir)->translatedFormat('l, d F Y')}}
-                            @endif
+                            {{ \Carbon\Carbon::parse($tugas->deadline)->translatedFormat('l, d F Y')}}
                           </td>
                         </tr>
                         <tr>
-                            <td class="text-right" width="20%">Umur Sekarang</td> 
-                            <td width="1%">:</td> 
-                            <td width="auto" class="text-left" style="font-weight: bold;">
-                            @if (empty($mhs->tgl_lahir)) 
-                                - 
-                            @else 
-                                {{ $y }} Tahun {{ $m }} Bulan {{ $d }} Hari
-                            @endif
-                            </td>
+                          <td class="text-right" width="20%">Status Tugas</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-left" style="font-weight: bold;">
+                              @if($tugas->status == 1)
+                              <span class="badge badge-success">Ditugaskan</span>
+                              @else
+                              <span class="badge badge-danger">Deadline</span>
+                              @endif
+                          </td>
                         </tr>
                         <tr>
-                          <td class="text-right" width="20%">Tabel Nilai</td> 
+                          <td class="text-right" width="20%">Soal Tugas</td> 
+                          <td width="1%">:</td> 
+                          <td width="auto" class="text-justify">{!! $tugas->soal !!}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" width="20%">Nilai Tugas</td> 
                           <td width="1%">:</td> 
                           <td width="auto">
                         
@@ -62,28 +58,32 @@
                                 <table class="table align-items-center table-flush text-center">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th>Link</th>  
-                                        <th>Tugas</th>  
+                                        <th>Mahasiswa</th>  
                                         <th>Nilai</th>                        
+                                        <th>Link</th>  
                                         <th>Action</th>                        
                                     </tr>
                                     </thead>
                                     <tbody>
                                         @forelse($nilai as $row)
-                                        <tr>
+                                        <tr>                                            
+                                            <td>{{ $row->mhs->name }}</td>
+                                            <td>{{ $row->nilai }}</td>
                                             <td>
                                               <a target="_blank" href="{{ $row->hasilTugas->link_tugas }}" class="btn btn-sm btn-primary">
                                                 <i class="fa-solid fa-link"></i>
                                               </a>
                                             </td>
-                                            <td>{{ $row->tugas->tugas_ke }}</td>
-                                            <td>{{ $row->nilai }}</td>
                                             <td>
+                                              <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editNilai{{$row->id}}" id="#myBtn">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                              </button>
                                               <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteNilai{{$row->id}}" id="#myBtn">
                                                 <i class="fas fa-trash"></i>
                                               </button>
                                             </td>
                                             @include('layouts.modal.del-nilai')
+                                            @include('layouts.modal.edit-nilai')
                                         </tr>
                                         @empty
                                         <tr>
