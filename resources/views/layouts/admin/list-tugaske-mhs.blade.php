@@ -174,18 +174,22 @@
                             <td>
                               <a href="{{ route('admin.detailmhs',$row->mhs->user_id) }}" class="btn btn-sm btn-primary">
                                     <i class="fa-solid fa-eye"></i>
-                                </a>
-                               <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editStatusPeriksaTugas{{$row->id}}" id="#myBtn">
-                                  <i class="fa-solid fa-pencil"></i>
-                                </button>
+                                </a>                               
                                 <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#linkTugas{{$row->id}}" id="#myBtn">
                                   <i class="fa-solid fa-link"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editStatusPeriksaTugas{{$row->id}}" id="#myBtn">
+                                  <i class="fa-solid fa-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#addNilaiMhs{{$row->id}}" id="#myBtn">
+                                  <i class="fa-solid fa-list-ol"></i>
                                 </button>
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteTugas{{$row->id}}" id="#myBtn">
                                   <i class="fas fa-trash"></i>
                                 </button>
                             </td>
                             @include('layouts.modal.edit-status-periksa-tugas')
+                            @include('layouts.modal.add-nilai')
                             @include('layouts.modal.del-tugas-admin')
                             @include('layouts.modal.link-tugas-admin')
                         </tr>

@@ -85,6 +85,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     //Nilai Mahasiswa
     Route::get('nilai_mhs', [NilaiMahasiswa::class, 'index'])->name('nilai.index');
     Route::get('nilai_mhs/rincian/{mahasiswa_id}', [NilaiMahasiswa::class, 'detail_nilai'])->name('nilai.detail');
+    Route::post('nilai_mhs/simpan', [NilaiMahasiswa::class, 'simpan_nilai'])->name('nilai.simpan');
 
 });
 

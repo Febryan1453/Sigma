@@ -40,4 +40,20 @@ class NilaiMahasiswa extends Controller
             'd'         => $d,
         ]);
     }
+
+    public function simpan_nilai(Request $request)
+    {
+        $nilai = $request->nilai;
+        $nama = $request->nama;
+
+        $addNilai                   = new Nilai();
+        $addNilai->hasil_tugas_id   = $request->id;
+        $addNilai->tugas_id         = $request->tugas_id;
+        $addNilai->mahasiswa_id     = $request->mahasiswa_id;
+        $addNilai->nilai            = $nilai;
+        $addNilai->jurusan          = $request->jurusan;
+        $addNilai->save();
+
+        return redirect()->back()->with('Ok', "Nilai $nilai diberkan kepada $nama !");
+    }
 }
