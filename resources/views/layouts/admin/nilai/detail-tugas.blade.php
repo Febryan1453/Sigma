@@ -53,7 +53,11 @@
                           <td class="text-right" width="20%">Nilai Tugas</td> 
                           <td width="1%">:</td> 
                           <td width="auto">
-                        
+                            <div class="text-left mb-2">
+                              <a target="_blank" href="{{ route('nilai.per.tugas', $tugas->id) }}" title="Download PDF">
+                                <img style="width: 25px;" src="{{ asset ('RuangGuru/img/pdf.png') }}" alt="">
+                              </a>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table align-items-center table-flush text-center">
                                     <thead class="thead-light">

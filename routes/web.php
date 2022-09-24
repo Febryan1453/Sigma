@@ -6,9 +6,12 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\NeedsController;
 use App\Http\Controllers\NilaiMahasiswa;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Embed\Embed;
+use Illuminate\Support\Facades\App;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,6 +94,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('nilai_mhs/tugas', [NilaiMahasiswa::class, 'per_tugas'])->name('nilai.tugas');
     Route::get('nilai_mhs/tugas/{id}', [NilaiMahasiswa::class, 'detail_tugas'])->name('nilai.rincian');
     Route::put('nilai_mhs/edit_nilai', [NilaiMahasiswa::class, 'edit_nilai'])->name('nilai.edit');
+    
+    // PDF nilai
+    Route::get('nilai_mhs/per/tugas/{tugas_id}', [PdfController::class, 'nilai_per_tugas'])->name('nilai.per.tugas');
+
 
 });
 
@@ -121,6 +128,7 @@ Route::prefix('mahasiswa')->middleware(['auth','isMhs'])->group(function(){
 
 Route::get('/materi/{tgl_materi}/{id}', [NeedsController::class, 'detailMateri'])->name('materi.detail');
 
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test', function () {
 
@@ -132,6 +140,16 @@ Route::get('/materi/{tgl_materi}/{id}', [NeedsController::class, 'detailMateri']
 //     return [
 //         $info->code,
 //     ];
+// });
+
+// Route::get('pdf', function(){
+//     $pdf = App::make('dompdf.wrapper');
+//     $pdf->loadHTML('<h1>Test</h1>');
+//     return $pdf->stream();
+
+    // $pdf = PDF::loadview("welcome");
+    // return $pdf->stream();
+
 // });
 
 

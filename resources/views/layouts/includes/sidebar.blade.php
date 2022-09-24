@@ -93,11 +93,11 @@
               active
             @endif
           ">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#nilaiMhs" aria-expanded="false" aria-controls="collapseForm">
               <i class="fa-solid fa-list-ol"></i>
               <span>Nilai Mahasiswa</span>
             </a>
-            <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+            <div id="nilaiMhs" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Nilai</h6>
                 <a class="collapse-item {{request()->routeIs('nilai.index') ? 'active' : '' }}" href="{{route('nilai.index')}}">Per Mahasiswa</a>
@@ -154,6 +154,13 @@
             </div>
           </li>
           @endif
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-gear"></i>
+              <span>Pengaturan</span>
+            </a>
+          </li>
 
           <li class="nav-item {{request()->routeIs('admin.deltugasid') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route ('admin.deltugasid') }}">
