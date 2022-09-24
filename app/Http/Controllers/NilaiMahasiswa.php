@@ -21,8 +21,8 @@ class NilaiMahasiswa extends Controller
 
     public function detail_nilai($mahasiswa_id)
     {
-        $title = "Nilai Mahasiswa";
         $mhs = Mahasiswa::findOrFail($mahasiswa_id);
+        $title = "Nilai $mhs->name";
         $nilai = Nilai::where('mahasiswa_id',$mahasiswa_id)->get();
 
         $tglLahir = new DateTime($mhs->tgl_lahir);
@@ -55,5 +55,12 @@ class NilaiMahasiswa extends Controller
         $addNilai->save();
 
         return redirect()->back()->with('Ok', "Nilai $nilai diberkan kepada $nama !");
+    }
+
+    public function delete_nilai(Request $request)
+    {
+        $nilai = Nilai::findOrFail($request->id);
+        $nilai->delete();
+        return redirect()->back()->with('Ok', "Nilai berhasil dihapus !");
     }
 }

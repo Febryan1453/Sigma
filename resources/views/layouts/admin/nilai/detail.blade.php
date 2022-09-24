@@ -15,6 +15,7 @@
 
         <div class="row">
             <div class="col-lg-12 mb-4">
+              @include('layouts.alert.berhasil')
               <div class="card mb-4">
                 <div class="card-body">                  
                   <div class="table-responsive">
@@ -61,15 +62,28 @@
                                 <table class="table align-items-center table-flush text-center">
                                     <thead class="thead-light">
                                     <tr>
+                                        <th>Link</th>  
                                         <th>Tugas</th>  
                                         <th>Nilai</th>                        
+                                        <th></th>                        
                                     </tr>
                                     </thead>
                                     <tbody>
                                         @forelse($nilai as $row)
                                         <tr>
+                                            <td>
+                                              <a target="_blank" href="{{ $row->hasilTugas->link_tugas }}" class="btn btn-sm btn-success">
+                                                <i class="fa-solid fa-link"></i>
+                                              </a>
+                                            </td>
                                             <td>{{ $row->tugas->tugas_ke }}</td>
                                             <td>{{ $row->nilai }}</td>
+                                            <td>
+                                              <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteNilai{{$row->id}}" id="#myBtn">
+                                                <i class="fas fa-trash"></i>
+                                              </button>
+                                            </td>
+                                            @include('layouts.modal.del-nilai')
                                         </tr>
                                         @empty
                                         <tr>

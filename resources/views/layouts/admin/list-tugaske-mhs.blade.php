@@ -181,7 +181,7 @@
                                 <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editStatusPeriksaTugas{{$row->id}}" id="#myBtn">
                                   <i class="fa-solid fa-pencil"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#addNilaiMhs{{$row->id}}" id="#myBtn">
+                                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#addNilaiMhs{{$row->id}}" id="#myBtn">
                                   <i class="fa-solid fa-list-ol"></i>
                                 </button>
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteTugas{{$row->id}}" id="#myBtn">

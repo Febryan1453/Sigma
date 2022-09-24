@@ -86,6 +86,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('nilai_mhs', [NilaiMahasiswa::class, 'index'])->name('nilai.index');
     Route::get('nilai_mhs/rincian/{mahasiswa_id}', [NilaiMahasiswa::class, 'detail_nilai'])->name('nilai.detail');
     Route::post('nilai_mhs/simpan', [NilaiMahasiswa::class, 'simpan_nilai'])->name('nilai.simpan');
+    Route::delete('nilai_mhs/delete', [NilaiMahasiswa::class, 'delete_nilai'])->name('nilai.delete'); 
 
 });
 
