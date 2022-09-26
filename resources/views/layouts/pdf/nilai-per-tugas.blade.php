@@ -37,7 +37,7 @@
  
 	<table class='table table-bordered'>
 		<thead>
-			<tr>
+			<tr class="text-center">
 				<th>No</th>
 				<th>Nama Mahasiswa</th>
 				<th>Nilai</th>
@@ -46,16 +46,20 @@
 		</thead>
 		<tbody>
 			@php $i=1 @endphp
-			@foreach($nilai as $row)
+			@forelse($nilai as $row)
 			<tr>
-				<td>{{ $i++ }}</td>
+				<td class="text-center">{{ $i++ }}</td>
 				<td>{{$row->mhs->name}}</td>
-				<td>{{$row->nilai}}</td>
+				<td class="text-center">{{$row->nilai}}</td>
 				<td>
                     <a target="_blank" href="{{ $row->hasilTugas->link_tugas }}">{{ $row->hasilTugas->link_tugas }}</a>
                 </td>
 			</tr>
-			@endforeach
+			@empty
+			<tr>
+				<td class="text-center" colspan="4">Nilai belum di input</td>
+			</tr>
+			@endforelse
 		</tbody>
 	</table>
  
