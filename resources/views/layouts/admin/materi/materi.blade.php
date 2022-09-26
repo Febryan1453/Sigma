@@ -50,9 +50,9 @@
                                 <a href="{{ route('admin.edit.materi',$row->id) }}" class="btn btn-sm btn-primary">
                                     <i class="fa-solid fa-pencil"></i>
                                 </a>
-                                <button type="button" class="btn btn-sm btn-warning" onclick="fCopy()" id="#myBtn">
+                                <!-- <button type="button" class="btn btn-sm btn-warning" onclick="fCopy()" id="#myBtn">
                                     <i class="fa-regular fa-copy"></i>
-                                </button>
+                                </button> -->
                                 </a>
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMateri{{$row->id}}" id="#myBtn">
                                     <i class="fa-solid fa-trash"></i>
