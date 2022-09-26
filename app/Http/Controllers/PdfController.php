@@ -14,7 +14,7 @@ class PdfController extends Controller
         $nilai = NilaiMahasiswa::where('tugas_id', $tugas_id)->orderby('nilai','DESC')->get();
         $tugas = Tugas::findOrFail($tugas_id);
 
-        $fileName = "Daftar Nilai Tugas $tugas->tugas_ke";
+        $fileName = "Daftar_Nilai_Tugas_$tugas->tugas_ke.pdf";
 
     	$pdf = Pdf::loadview('layouts.pdf.nilai-per-tugas',[
             'nilai' =>$nilai,
