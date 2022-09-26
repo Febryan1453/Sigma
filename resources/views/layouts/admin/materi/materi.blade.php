@@ -43,16 +43,16 @@
                             <td style="text-align: left;">{!! $row->rincian_materi !!}</td>
                             <!-- <td>{{ $row->link_materi }}</td> -->
                             <td>
-                              <input type="hidden" value="{{ route('materi.detail',[$row->tgl_materi, $row->id]) }}" id="linkMateri">
+                              <input type="hidden" value="{{ route('materi.detail',[$row->tgl_materi, $row->id]) }}" id="linkMateri{{$row->id}}">
                                 <a target="_blank" href="{{ route('materi.detail',[$row->tgl_materi, $row->id]) }}" class="btn btn-sm btn-success">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a href="{{ route('admin.edit.materi',$row->id) }}" class="btn btn-sm btn-primary">
                                     <i class="fa-solid fa-pencil"></i>
                                 </a>
-                                <!-- <button type="button" class="btn btn-sm btn-warning" onclick="fCopy()" id="#myBtn">
+                                <button type="button" class="btn btn-sm btn-warning" onclick="fCopy()" id="#myBtn">
                                     <i class="fa-regular fa-copy"></i>
-                                </button> -->
+                                </button>
                                 </a>
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMateri{{$row->id}}" id="#myBtn">
                                     <i class="fa-solid fa-trash"></i>
@@ -60,6 +60,16 @@
                             </td>
                         </tr>
                         @include('layouts.modal.del-materi')
+                        <script>
+                          function fCopy(){
+                              var text = document.getElementById('linkMateri{{$row->id}}');
+
+                              // Copy the text inside the text field
+                              navigator.clipboard.writeText(text.value);
+
+                              alert("Berhasil menyalin link materi");
+                          }
+                        </script>
                         @empty
                         <tr>
                             <td class="text-center" colspan="5">Materi belum ada !</td>
