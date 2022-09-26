@@ -34,13 +34,15 @@
                     <tbody>
                         @forelse($materi as $row)
                         <tr>
-                            <!-- <td style="text-transform: uppercase;">{{ $row->jurusan }}</td> -->
-                            <a target="_blank" href="{{ route('materi.detail',[$row->tgl_materi, $row->id]) }}" class="btn btn-sm btn-success">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
+                            <!-- <td style="text-transform: uppercase;">{{ $row->jurusan }}</td> -->        
                             <td>{{ \Carbon\Carbon::parse($row->tgl_materi)->translatedFormat('l, d F Y')}}</td>
                             <td style="text-align: left;">{{ $row->nama_materi }} <br> oleh: {{ $row->dosen }}</td>
                             <td style="text-align: left;">{!! $row->rincian_materi !!}</td>
+                            <td>
+                              <a target="_blank" href="{{ route('materi.detail',[$row->tgl_materi, $row->id]) }}" class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-eye"></i>
+                              </a>
+                            </td>
                         </tr>
                         @empty
                         <tr>
